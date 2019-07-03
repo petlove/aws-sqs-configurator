@@ -2,6 +2,7 @@
 
 require 'aws/sqs/configurator/version'
 require 'aws/sqs/configurator/client'
+require 'aws/sqs/configurator/logger'
 require 'aws-sdk-sqs'
 
 module AWS
