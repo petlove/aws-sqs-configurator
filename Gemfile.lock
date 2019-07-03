@@ -1,8 +1,16 @@
+GIT
+  remote: https://github.com/petlove/aws-sns-configurator.git
+  revision: 57d9b82b07240f46e1117893aa4954d375ff9279
+  specs:
+    aws-sns-configurator (0.1.0)
+      aws-sdk-sns (~> 1.18.0)
+
 PATH
   remote: .
   specs:
     aws-sqs-configurator (0.1.0)
       aws-sdk-sqs (~> 1.18.0)
+      aws-sns-configurator (~> 0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -24,6 +32,9 @@ GEM
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
+    aws-sdk-sns (1.18.0)
+      aws-sdk-core (~> 3, >= 3.58.0)
+      aws-sigv4 (~> 1.1)
     aws-sdk-sqs (1.18.0)
       aws-sdk-core (~> 3, >= 3.58.0)
       aws-sigv4 (~> 1.1)
@@ -110,6 +121,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   aws-sdk-sqs (~> 1.18.0)
+  aws-sns-configurator!
   aws-sqs-configurator!
   bundler (~> 2.0.2)
   dotenv
