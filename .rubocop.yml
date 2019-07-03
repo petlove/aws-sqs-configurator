@@ -1,0 +1,30 @@
+require: rubocop-performance
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 130
+
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/AbcSize:
+  Max: 25
+
+AllCops:
+  TargetRubyVersion: 2.3.0
+  DisplayCopNames: true

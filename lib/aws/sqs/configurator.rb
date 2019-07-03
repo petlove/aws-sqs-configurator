@@ -1,10 +1,11 @@
-require "aws/sqs/configurator/version"
+# frozen_string_literal: true
 
-module Aws
-  module Sqs
+require 'aws/sqs/configurator/version'
+
+module AWS
+  module SQS
     module Configurator
-      class Error < StandardError; end
-      # Your code goes here...
+      require 'aws/sqs/configurator/railtie' if defined?(Rails)
     end
   end
 end
