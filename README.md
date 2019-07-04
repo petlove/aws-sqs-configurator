@@ -38,6 +38,9 @@ message_retention_period: 1209600
 queues:
   - name: 'product_updater'
     region: 'sa-east-1'
+    metadata:
+      type: 'strict'
+      reference: 'product'
     topics:
         - name: 'product'
           region: 'sa-east-1'
@@ -62,6 +65,7 @@ Out of queues list, you should define default options that won't be required in 
 | `message_retention_period` | `1209600` | no | The queue message retention period in seconds. See more [here](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-architecture.html).|
 | `queues` | `[]` | yes | The queues list. |
 | `name` | `nil` | yes | The queue/topic name. |
+| `metadata` | `{}` | no | Any data that you want put inside the queue to identify it after read the config. |
 | `topics` | `[]` | no | The topics that the queue will be subscribed. |
 
 ### Environments
