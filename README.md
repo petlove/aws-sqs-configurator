@@ -45,7 +45,7 @@ queues:
     dead_letter_queue: false
 ```
 
-Out of topics list, you should define default options that won't be required in the topic options. The available options are:
+Out of queues list, you should define default options that won't be required in the queue options. The available options are:
 
 | Name | Default | Required | What's it |
 |------|---------|----------|-----------|
