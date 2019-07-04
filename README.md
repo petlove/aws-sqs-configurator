@@ -29,6 +29,7 @@ region: 'us-east-1'
 prefix: 'system_name'
 suffix: 'queue'
 environment: 'production'
+fifo: false
 max_receive_count: 7
 dead_letter_queue: true
 dead_letter_queue_suffix: '_failures'
@@ -53,6 +54,7 @@ Out of queues list, you should define default options that won't be required in 
 | `prefix` | `nil` | no | The queue name prefix. It's inserted before the `environment`.|
 | `suffix` | `nil` | no | The queue name suffix. It's inserted after the `name`. |
 | `environment` | `nil` | no | The queue environment. It's inserted between `prefix` and `name`. |
+| `fifo` | `false` | no | If the queue is a fifo queue. If true, will be added after the suffix the value `'.fifo'`. |
 | `max_receive_count` | `7` | no | The maximum number of times that a message can be received by consumers. When this value is exceeded for a message the message will be automatically sent to the Dead Letter Queue if that exist. See more [here](https://aws.amazon.com/blogs/aws/amazon-sqs-new-dead-letter-queue/).|
 | `dead_letter_queue` | `false` | no | If will generate a dead letter queue to hold failures. See more [here](https://aws.amazon.com/blogs/aws/amazon-sqs-new-dead-letter-queue/).|
 | `dead_letter_queue_suffix` | `'_failures'` | no | The dead letter queue suffix. |
