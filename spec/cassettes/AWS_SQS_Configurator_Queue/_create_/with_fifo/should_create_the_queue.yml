@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sqs.us-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateQueue&Attribute.1.Name=FifoQueue&Attribute.1.Value=true&Attribute.2.Name=ContentBasedDeduplication&Attribute.2.Value=false&Attribute.3.Name=VisibilityTimeout&Attribute.3.Value=60&Attribute.4.Name=MessageRetentionPeriod&Attribute.4.Value=1209600&QueueName=fifo_queue.fifo&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.3.0 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190705T180909Z
+      X-Amz-Content-Sha256:
+      - 5bb4fdc1719c9ab0472c6e887cb23a571e4559fe38a13593f778e52d9873b310
+      Content-Length:
+      - '302'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 43a1c4d4-c850-52bd-af5b-914d5cd622a5
+      Date:
+      - Fri, 05 Jul 2019 18:09:10 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '335'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-1.amazonaws.com/381158256258/fifo_queue.fifo</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>43a1c4d4-c850-52bd-af5b-914d5cd622a5</RequestId></ResponseMetadata></CreateQueueResponse>
+    http_version:
+  recorded_at: Fri, 05 Jul 2019 18:09:10 GMT
+recorded_with: VCR 5.0.0

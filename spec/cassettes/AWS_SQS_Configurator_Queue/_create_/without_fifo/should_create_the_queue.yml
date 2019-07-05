@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sqs.us-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateQueue&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueName=standard_queue&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.3.0 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190705T180910Z
+      X-Amz-Content-Sha256:
+      - 341f7a6a3acf9c4ee1025e0c6cf2bfb8f35f8d3deb401f35ee0013a9ef46b5d7
+      Content-Length:
+      - '184'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d19c9266-d841-507c-a298-c7ff4cc7d817
+      Date:
+      - Fri, 05 Jul 2019 18:09:10 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '334'
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-1.amazonaws.com/381158256258/standard_queue</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>d19c9266-d841-507c-a298-c7ff4cc7d817</RequestId></ResponseMetadata></CreateQueueResponse>
+    http_version:
+  recorded_at: Fri, 05 Jul 2019 18:09:11 GMT
+recorded_with: VCR 5.0.0

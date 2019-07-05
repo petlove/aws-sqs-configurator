@@ -8,7 +8,7 @@ module AWS
 
         attr_accessor :name, :region, :prefix, :suffix, :environment, :metadata, :name_formatted, :arn, :topics,
                       :visibility_timeout, :max_receive_count, :message_retention_period, :fifo, :dead_letter_queue,
-                      :dead_letter_queue_suffix, :content_based_deduplication, :attributtes, :dead_letter
+                      :dead_letter_queue_suffix, :content_based_deduplication, :attributes, :dead_letter
 
         REQUIRED_ACCESSORS = %i[name region].freeze
         VISIBILITY_TIMEOUT_DEFAULT = 60
@@ -32,7 +32,9 @@ module AWS
           validate!
         end
 
-        def create!; end
+        def create!(client)
+          client.aws.create_queue(queue_name: @name_formatted, attributes: @attributes)
+        end
 
         private
 
@@ -57,18 +59,34 @@ module AWS
         end
 
         def dead_letter_options(options)
-          options.merge(dead_letter_queue: false, suffix: "#{@suffix}_#{@dead_letter_queue_suffix}")
+          options.merge(dead_letter_queue: false, suffix: [@suffix, @dead_letter_queue_suffix].compact.join('_'))
         end
 
         def build_attributes!
-          @attributtes = {
-            FifoQueue: @fifo,
-            ContentBasedDeduplication: @content_based_deduplication,
-            VisibilityTimeout: @visibility_timeout,
-            MessageRetentionPeriod: @message_retention_period,
-            maxReceiveCount: @dead_letter_queue && @max_receive_count,
-            deadLetterTargetArn: @dead_letter&.arn
+          @attributes = {
+            FifoQueue: fifo_queue_attribute,
+            ContentBasedDeduplication: content_based_deduplication_attribute,
+            VisibilityTimeout: @visibility_timeout.to_s,
+            MessageRetentionPeriod: @message_retention_period.to_s,
+            maxReceiveCount: max_receive_count_attribute,
+            deadLetterTargetArn: dead_letter_target_arn_attribute
           }.reject { |_key, value| value.nil? }
+        end
+
+        def fifo_queue_attribute
+          'true' if @fifo
+        end
+
+        def content_based_deduplication_attribute
+          @content_based_deduplication.to_s if @fifo
+        end
+
+        def dead_letter_target_arn_attribute
+          @dead_letter.arn if @dead_letter_queue
+        end
+
+        def max_receive_count_attribute
+          @max_receive_count.to_s if @dead_letter_queue
         end
 
         def normalize(options)
@@ -94,7 +112,7 @@ module AWS
         end
 
         def build_name_formatted!
-          @name_formatted = [@prefix, @environment, @name, fifo_suffix].compact.join('_')
+          @name_formatted = [[@prefix, @environment, @name, @suffix].compact.join('_'), fifo_suffix].compact.join('.')
         end
 
         def build_arn!
@@ -110,7 +128,7 @@ module AWS
         end
 
         def fifo_suffix
-          @fifo ? "#{@suffix}.fifo" : @suffix
+          'fifo' if @fifo
         end
 
         def validate!

@@ -115,13 +115,34 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       end
 
       it 'should have queues attributes' do
-        expect(subject.attributtes).to be_a(Hash)
-        expect(subject.attributtes[:FifoQueue]).to be_truthy
-        expect(subject.attributtes[:ContentBasedDeduplication]).to be_truthy
-        expect(subject.attributtes[:VisibilityTimeout]).to eq(40)
-        expect(subject.attributtes[:MessageRetentionPeriod]).to eq(1_000_000)
-        expect(subject.attributtes[:maxReceiveCount]).to eq(8)
-        expect(subject.attributtes[:deadLetterTargetArn]).to eq('arn:aws:sns:sa-east-1:123456789:system_name_production_product_updater_queue_errors.fifo')
+        expect(subject.attributes).to be_a(Hash)
+        expect(subject.attributes[:FifoQueue]).to eq('true')
+        expect(subject.attributes[:ContentBasedDeduplication]).to eq('true')
+        expect(subject.attributes[:VisibilityTimeout]).to eq('40')
+        expect(subject.attributes[:MessageRetentionPeriod]).to eq('1000000')
+        expect(subject.attributes[:maxReceiveCount]).to eq('8')
+        expect(subject.attributes[:deadLetterTargetArn]).to eq('arn:aws:sns:sa-east-1:123456789:system_name_production_product_updater_queue_errors.fifo')
+      end
+    end
+  end
+
+  describe '#create!' do
+    let(:client) { build :client }
+    subject { queue.create!(client) }
+
+    context 'with fifo' do
+      let(:queue) { described_class.new(name: 'fifo_queue', fifo: true, region: 'us-east-1') }
+
+      it 'should create the queue', :vcr do
+        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/fifo_queue.fifo")
+      end
+    end
+
+    context 'without fifo' do
+      let(:queue) { described_class.new(name: 'standard_queue', region: 'us-east-1') }
+
+      it 'should create the queue', :vcr do
+        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
       end
     end
   end
