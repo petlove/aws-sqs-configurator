@@ -12,7 +12,7 @@ module AWS
 
         REQUIRED_ACCESSORS = %i[name region].freeze
         VISIBILITY_TIMEOUT_DEFAULT = 60
-        MAX_RECEIVE_COUNT_DEFAULT = 60
+        MAX_RECEIVE_COUNT_DEFAULT = 7
         MESSAGE_RETETION_PERIOD_DEFAULT = 1_209_600
         FIFO_DEFAULT = false
         DEAD_LETTER_QUEUE_DEFAULT = false
@@ -68,7 +68,7 @@ module AWS
         end
 
         def build_name_formatted!
-          @name_formatted = [@prefix, @environment, @name, @suffix, fifo_suffix].compact.join('_')
+          @name_formatted = [@prefix, @environment, @name, fifo_suffix].compact.join('_')
         end
 
         def build_arn!
@@ -84,7 +84,7 @@ module AWS
         end
 
         def fifo_suffix
-          '.fifo' if @fifo
+          @fifo ? "#{@suffix}.fifo" : @suffix
         end
 
         def validate!

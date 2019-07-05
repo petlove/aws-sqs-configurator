@@ -14,10 +14,6 @@ module AWS
       require 'aws/sqs/configurator/railtie' if defined?(Rails)
 
       class << self
-        def create!(force = false)
-          Creator.new(force).create!
-        end
-
         def read!
           Reader.new.queues!
         end
