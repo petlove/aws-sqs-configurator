@@ -3,7 +3,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-
 gem 'aws-sdk-sqs', '~> 1.18.0'
 gem 'aws-sns-configurator', github: 'petlove/aws-sns-configurator'
 

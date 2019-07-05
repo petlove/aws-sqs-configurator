@@ -30,9 +30,10 @@ prefix: 'system_name'
 suffix: 'queue'
 environment: 'production'
 fifo: false
+content_based_deduplication: false
 max_receive_count: 7
 dead_letter_queue: true
-dead_letter_queue_suffix: '_failures'
+dead_letter_queue_suffix: 'failures'
 visibility_timeout: 60
 message_retention_period: 1209600
 queues:
@@ -58,6 +59,7 @@ Out of queues list, you should define default options that won't be required in 
 | `suffix` | `nil` | no | The queue name suffix. It's inserted after the `name`. |
 | `environment` | `nil` | no | The queue environment. It's inserted between `prefix` and `name`. |
 | `fifo` | `false` | no | If the queue is a fifo queue. If true, will be added after the suffix the value `'.fifo'`. |
+| `content_based_deduplication` | `false` | no | This instructs Amazon SQS to use a SHA-256 hash to generate the message deduplication ID using the body of the message. See more [here](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing) |
 | `max_receive_count` | `7` | no | The maximum number of times that a message can be received by consumers. When this value is exceeded for a message the message will be automatically sent to the Dead Letter Queue if that exist. See more [here](https://aws.amazon.com/blogs/aws/amazon-sqs-new-dead-letter-queue/).|
 | `dead_letter_queue` | `false` | no | If will generate a dead letter queue to hold failures. See more [here](https://aws.amazon.com/blogs/aws/amazon-sqs-new-dead-letter-queue/).|
 | `dead_letter_queue_suffix` | `'_failures'` | no | The dead letter queue suffix. |
