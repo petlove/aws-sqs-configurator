@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sqs.us-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=GetQueueUrl&QueueName=unknown_queue&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.3.0 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190705T182705Z
+      X-Amz-Content-Sha256:
+      - b2ba69ff2dbae44374d721f0d85f0737735ee0837158bd0c2cb68666992b18d1
+      Content-Length:
+      - '61'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Amzn-Requestid:
+      - 683df885-0b4f-5daa-8107-ad1c93f575e8
+      Date:
+      - Fri, 05 Jul 2019 18:27:06 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '333'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><ErrorResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><Error><Type>Sender</Type><Code>AWS.SimpleQueueService.NonExistentQueue</Code><Message>The
+        specified queue does not exist for this wsdl version.</Message><Detail/></Error><RequestId>683df885-0b4f-5daa-8107-ad1c93f575e8</RequestId></ErrorResponse>
+    http_version:
+  recorded_at: Fri, 05 Jul 2019 18:27:06 GMT
+recorded_with: VCR 5.0.0

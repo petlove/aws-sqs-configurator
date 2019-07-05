@@ -36,6 +36,12 @@ module AWS
           client.aws.create_queue(queue_name: @name_formatted, attributes: @attributes)
         end
 
+        def find!(client)
+          client.aws.get_queue_url(queue_name: @name_formatted)
+        rescue Aws::SQS::Errors::NonExistentQueue
+          false
+        end
+
         private
 
         def build_accessors_by_options!(options)
