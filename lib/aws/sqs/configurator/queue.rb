@@ -8,7 +8,7 @@ module AWS
 
         attr_accessor :name, :region, :prefix, :suffix, :environment, :metadata, :name_formatted, :arn, :topics,
                       :visibility_timeout, :max_receive_count, :message_retention_period, :fifo, :dead_letter_queue,
-                      :dead_letter_queue_suffix, :content_based_deduplication
+                      :dead_letter_queue_suffix, :content_based_deduplication, :attributtes, :dead_letter
 
         REQUIRED_ACCESSORS = %i[name region].freeze
         VISIBILITY_TIMEOUT_DEFAULT = 60
@@ -22,6 +22,21 @@ module AWS
         def initialize(options)
           options = normalize(options)
 
+          build_accessors_by_options!(options)
+          build_name_formatted!
+          build_arn!
+          build_topics!(options[:topics])
+          build_dead_letter!(options)
+          build_attributes!
+
+          validate!
+        end
+
+        def create!; end
+
+        private
+
+        def build_accessors_by_options!(options)
           @name = options[:name]
           @region = options[:region]
           @prefix = options[:prefix]
@@ -35,15 +50,26 @@ module AWS
           @dead_letter_queue = options[:dead_letter_queue]
           @dead_letter_queue_suffix = options[:dead_letter_queue_suffix]
           @content_based_deduplication = options[:content_based_deduplication]
-
-          build_name_formatted!
-          build_arn!
-          build_topics!(options[:topics])
-
-          validate!
         end
 
-        private
+        def build_dead_letter!(options)
+          @dead_letter = self.class.new(dead_letter_options(options)) if @dead_letter_queue
+        end
+
+        def dead_letter_options(options)
+          options.merge(dead_letter_queue: false, suffix: "#{@suffix}_#{@dead_letter_queue_suffix}")
+        end
+
+        def build_attributes!
+          @attributtes = {
+            FifoQueue: @fifo,
+            ContentBasedDeduplication: @content_based_deduplication,
+            VisibilityTimeout: @visibility_timeout,
+            MessageRetentionPeriod: @message_retention_period,
+            maxReceiveCount: @dead_letter_queue && @max_receive_count,
+            deadLetterTargetArn: @dead_letter&.arn
+          }.reject { |_key, value| value.nil? }
+        end
 
         def normalize(options)
           return default_options(options) if options.is_a?(String)

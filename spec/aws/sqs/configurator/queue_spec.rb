@@ -104,11 +104,24 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
         expect(subject.dead_letter_queue).to be_truthy
         expect(subject.dead_letter_queue_suffix).to eq('errors')
         expect(subject.content_based_deduplication).to be_truthy
+      end
+
+      it 'should have topics fields' do
         expect(subject.topics.all? { |topic| topic.is_a?(AWS::SNS::Configurator::Topic) }).to be_truthy
         expect(subject.topics.length).to eq(1)
         expect(subject.topics.first.name).to eq('product')
         expect(subject.topics.first.name_formatted).to eq('product')
         expect(subject.topics.first.arn).to eq('arn:aws:sns:us-east-1:123456789:product')
+      end
+
+      it 'should have queues attributes' do
+        expect(subject.attributtes).to be_a(Hash)
+        expect(subject.attributtes[:FifoQueue]).to be_truthy
+        expect(subject.attributtes[:ContentBasedDeduplication]).to be_truthy
+        expect(subject.attributtes[:VisibilityTimeout]).to eq(40)
+        expect(subject.attributtes[:MessageRetentionPeriod]).to eq(1_000_000)
+        expect(subject.attributtes[:maxReceiveCount]).to eq(8)
+        expect(subject.attributtes[:deadLetterTargetArn]).to eq('arn:aws:sns:sa-east-1:123456789:system_name_production_product_updater_queue_errors.fifo')
       end
     end
   end
