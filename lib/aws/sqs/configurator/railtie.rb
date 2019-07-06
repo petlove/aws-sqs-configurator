@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'aws/sns/configurator'
+require 'aws/sqs/configurator'
 require 'rails'
 
 module AWS
