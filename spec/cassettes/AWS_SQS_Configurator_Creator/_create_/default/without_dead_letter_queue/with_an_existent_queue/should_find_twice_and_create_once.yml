@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sqs.sa-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=GetQueueUrl&QueueName=system_name_production_product_updater_1_queue&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.sa-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T144601Z
+      X-Amz-Content-Sha256:
+      - 07e117f23c2bb183af401ac47d8591af3adb83b08fd22e85f3e58d48f43631d1
+      Content-Length:
+      - '94'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - f0ebe588-8ac6-5abd-a506-b0123cac5120
+      Date:
+      - Sat, 06 Jul 2019 14:46:02 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '366'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><GetQueueUrlResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><GetQueueUrlResult><QueueUrl>https://sqs.sa-east-1.amazonaws.com/381158256258/system_name_production_product_updater_1_queue</QueueUrl></GetQueueUrlResult><ResponseMetadata><RequestId>f0ebe588-8ac6-5abd-a506-b0123cac5120</RequestId></ResponseMetadata></GetQueueUrlResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 14:46:02 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=GetQueueUrl&QueueName=system_name_production_product_adjuster_1_alert&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T144602Z
+      X-Amz-Content-Sha256:
+      - 6e3cfcb5d48a858c266608c66c9eb54252b97f854967e160be06b51890eeabc2
+      Content-Length:
+      - '95'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Amzn-Requestid:
+      - b3d98ed8-c2e0-56be-9e3f-db42748a0b28
+      Date:
+      - Sat, 06 Jul 2019 14:46:02 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '333'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><ErrorResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><Error><Type>Sender</Type><Code>AWS.SimpleQueueService.NonExistentQueue</Code><Message>The
+        specified queue does not exist for this wsdl version.</Message><Detail/></Error><RequestId>b3d98ed8-c2e0-56be-9e3f-db42748a0b28</RequestId></ErrorResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 14:46:02 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateQueue&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueName=system_name_production_product_adjuster_1_alert&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T144602Z
+      X-Amz-Content-Sha256:
+      - 986c10bf0fcc54e74a7d3ae492685ef65919a9bad8b36546fe06b547d492fcf4
+      Content-Length:
+      - '217'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - b127d7e7-2658-58ca-8a51-827d90333e91
+      Date:
+      - Sat, 06 Jul 2019 14:46:03 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '367'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-1.amazonaws.com/381158256258/system_name_production_product_adjuster_1_alert</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>b127d7e7-2658-58ca-8a51-827d90333e91</RequestId></ResponseMetadata></CreateQueueResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 14:46:03 GMT
+recorded_with: VCR 5.0.0

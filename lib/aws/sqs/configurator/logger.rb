@@ -24,7 +24,7 @@ module AWS
           private
 
           def log(severity_level, message)
-            "[#{Time.now.iso8601}] [AWS::SNS::Configurator] #{severity_level} -- : #{message}"
+            "[#{Time.now.iso8601}] [AWS::SQS::Configurator] #{severity_level} -- : #{message}"
           end
         end
       end

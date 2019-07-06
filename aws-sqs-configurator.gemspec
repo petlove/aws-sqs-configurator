@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.files         = Dir['{lib}/**/*', 'CHANGELOG.md', 'MIT-LICENSE', 'README.md']
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.3.0'
+  spec.required_ruby_version = '>= 2.6.3'
 
   spec.add_dependency 'aws-sdk-sqs', '~> 1.18.0'
   spec.add_dependency 'aws-sns-configurator', '~> 0.1.0'

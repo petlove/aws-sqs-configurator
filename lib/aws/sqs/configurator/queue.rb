@@ -8,7 +8,7 @@ module AWS
 
         attr_accessor :name, :region, :prefix, :suffix, :environment, :metadata, :name_formatted, :arn, :topics,
                       :visibility_timeout, :max_receive_count, :message_retention_period, :fifo, :dead_letter_queue,
-                      :dead_letter_queue_suffix, :content_based_deduplication, :attributes, :dead_letter
+                      :dead_letter_queue_suffix, :content_based_deduplication, :attributes, :dead_letter, :url
 
         REQUIRED_ACCESSORS = %i[name region].freeze
         VISIBILITY_TIMEOUT_DEFAULT = 60
@@ -18,6 +18,9 @@ module AWS
         DEAD_LETTER_QUEUE_DEFAULT = false
         DEAD_LETTER_QUEUE_SUFFIX_DEFAULT = 'failures'
         CONTENT_BASED_DEDUPLICATION_DEFAULT = false
+        POLICY_VERSION = '2012-10-17'
+        POLICY_EFFECT = 'Allow'
+        POLICY_ACTION = 'SQS:SendMessage'
 
         def initialize(options)
           options = normalize(options)
@@ -25,6 +28,7 @@ module AWS
           build_accessors_by_options!(options)
           build_name_formatted!
           build_arn!
+          build_url!
           build_topics!(options[:topics])
           build_dead_letter!(options)
           build_attributes!
@@ -34,6 +38,7 @@ module AWS
 
         def create!(client)
           client.aws.create_queue(queue_name: @name_formatted, attributes: @attributes)
+                .tap { subscribe_in_topics!(client) if @topics.any? }
         end
 
         def find!(client)
@@ -43,6 +48,49 @@ module AWS
         end
 
         private
+
+        def subscribe_in_topics!(client)
+          @topics.each(&method(:subscribe!))
+          queue_topics_policy!(client)
+        end
+
+        def subscribe!(topic)
+          AWS::SNS::Configurator.create!(false, topic)
+          AWS::SNS::Configurator.subscribe!({
+                                              name: topic.name_formatted,
+                                              region: topic.region
+                                            }, 'sqs', @arn, raw: true)
+        end
+
+        def queue_topics_policy!(client)
+          client.aws.set_queue_attributes(queue_url: @url, attributes: { Policy: topics_policy.to_json })
+                .tap { log_policy }
+        end
+
+        def log_policy
+          Logger.info("Added policy: #{topics_policy[:Statement].map { |s| s[:Sid] }}")
+        end
+
+        def topics_policy
+          {
+            Version: POLICY_VERSION,
+            Id: "#{@arn}/SQSDefaultPolicy",
+            Statement: [
+              {
+                Sid: "subscription_in_#{@topics.map(&:name_formatted).join('_and_')}",
+                Effect: POLICY_EFFECT,
+                Principal: { AWS: '*' },
+                Action: POLICY_ACTION,
+                Resource: [@arn],
+                Condition: {
+                  ArnLike: {
+                    'aws:SourceArn' => @topics.map(&:arn)
+                  }
+                }
+              }
+            ]
+          }
+        end
 
         def build_accessors_by_options!(options)
           @name = options[:name]
@@ -65,7 +113,8 @@ module AWS
         end
 
         def dead_letter_options(options)
-          options.merge(dead_letter_queue: false, suffix: [@suffix, @dead_letter_queue_suffix].compact.join('_'))
+          options.merge(dead_letter_queue: false, topics: [], suffix: [@suffix, @dead_letter_queue_suffix].compact
+          .join('_'))
         end
 
         def build_attributes!
@@ -73,10 +122,19 @@ module AWS
             FifoQueue: fifo_queue_attribute,
             ContentBasedDeduplication: content_based_deduplication_attribute,
             VisibilityTimeout: @visibility_timeout.to_s,
-            MessageRetentionPeriod: @message_retention_period.to_s,
-            maxReceiveCount: max_receive_count_attribute,
-            deadLetterTargetArn: dead_letter_target_arn_attribute
-          }.reject { |_key, value| value.nil? }
+            MessageRetentionPeriod: @message_retention_period.to_s
+          }.merge(redrive_policy).compact
+        end
+
+        def redrive_policy
+          return {} unless max_receive_count_attribute || dead_letter_target_arn_attribute
+
+          {
+            RedrivePolicy: {
+              maxReceiveCount: max_receive_count_attribute,
+              deadLetterTargetArn: dead_letter_target_arn_attribute
+            }.compact.to_json
+          }
         end
 
         def fifo_queue_attribute
@@ -96,9 +154,7 @@ module AWS
         end
 
         def normalize(options)
-          return default_options(options) if options.is_a?(String)
-
-          default_options.merge(options.reject { |_key, value| value.nil? })
+          options.is_a?(String) ? default_options(options) : default_options.merge(options.compact)
         end
 
         def default_options(name = nil)
@@ -122,7 +178,11 @@ module AWS
         end
 
         def build_arn!
-          @arn = ['arn:aws:sns', @region, account_id, @name_formatted].compact.join(':')
+          @arn = ['arn:aws:sqs', @region, account_id, @name_formatted].compact.join(':')
+        end
+
+        def build_url!
+          @url = ["https://sqs.#{@region}.amazonaws.com", account_id, @name_formatted].compact.join('/')
         end
 
         def build_topics!(topics)

@@ -1,0 +1,346 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sqs.sa-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateQueue&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueName=system_name_production_product_updater_13_queue_failures&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.sa-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T154753Z
+      X-Amz-Content-Sha256:
+      - 1f209e539e81d26e940221e9225089b7d1fbdfcf5c4d0f41f5ffbdd901ea9278
+      Content-Length:
+      - '226'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 7a394186-fe2d-5e18-9a33-141c3ac4a19b
+      Date:
+      - Sat, 06 Jul 2019 15:47:53 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '376'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.sa-east-1.amazonaws.com/381158256258/system_name_production_product_updater_13_queue_failures</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>7a394186-fe2d-5e18-9a33-141c3ac4a19b</RequestId></ResponseMetadata></CreateQueueResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 15:47:53 GMT
+- request:
+    method: post
+    uri: https://sqs.sa-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateQueue&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&Attribute.3.Name=RedrivePolicy&Attribute.3.Value=%7B%22maxReceiveCount%22%3A%227%22%2C%22deadLetterTargetArn%22%3A%22arn%3Aaws%3Asqs%3Asa-east-1%3A381158256258%3Asystem_name_production_product_updater_13_queue_failures%22%7D&QueueName=system_name_production_product_updater_13_queue&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.sa-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T154753Z
+      X-Amz-Content-Sha256:
+      - 6b94a36aa6bb6c7a585d44fbdce10794362075513d5c682ba5663672bf7babf9
+      Content-Length:
+      - '442'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - c12d72fb-1f36-5969-a2a4-2761dbdfd82b
+      Date:
+      - Sat, 06 Jul 2019 15:47:53 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '367'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.sa-east-1.amazonaws.com/381158256258/system_name_production_product_updater_13_queue</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>c12d72fb-1f36-5969-a2a4-2761dbdfd82b</RequestId></ResponseMetadata></CreateQueueResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 15:47:53 GMT
+- request:
+    method: post
+    uri: https://sns.sa-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=GetTopicAttributes&TopicArn=arn%3Aaws%3Asns%3Asa-east-1%3A381158256258%3Aproduct&Version=2010-03-31
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sns/1.18.0
+      Host:
+      - sns.sa-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T154753Z
+      X-Amz-Content-Sha256:
+      - a93396e5d0fb93d57561bcc7dd5d520d29c1b54090520efcf8732408880736df
+      Content-Length:
+      - '106'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - dd21187d-48bf-5b56-945a-4de78c56d7b6
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '2131'
+      Vary:
+      - Accept-Encoding
+      Date:
+      - Sat, 06 Jul 2019 15:47:53 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <GetTopicAttributesResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+          <GetTopicAttributesResult>
+            <Attributes>
+              <entry>
+                <key>Policy</key>
+                <value>{&quot;Version&quot;:&quot;2008-10-17&quot;,&quot;Id&quot;:&quot;__default_policy_ID&quot;,&quot;Statement&quot;:[{&quot;Sid&quot;:&quot;__default_statement_ID&quot;,&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;AWS&quot;:&quot;*&quot;},&quot;Action&quot;:[&quot;SNS:GetTopicAttributes&quot;,&quot;SNS:SetTopicAttributes&quot;,&quot;SNS:AddPermission&quot;,&quot;SNS:RemovePermission&quot;,&quot;SNS:DeleteTopic&quot;,&quot;SNS:Subscribe&quot;,&quot;SNS:ListSubscriptionsByTopic&quot;,&quot;SNS:Publish&quot;,&quot;SNS:Receive&quot;],&quot;Resource&quot;:&quot;arn:aws:sns:sa-east-1:381158256258:product&quot;,&quot;Condition&quot;:{&quot;StringEquals&quot;:{&quot;AWS:SourceOwner&quot;:&quot;381158256258&quot;}}}]}</value>
+              </entry>
+              <entry>
+                <key>Owner</key>
+                <value>381158256258</value>
+              </entry>
+              <entry>
+                <key>SubscriptionsPending</key>
+                <value>0</value>
+              </entry>
+              <entry>
+                <key>TopicArn</key>
+                <value>arn:aws:sns:sa-east-1:381158256258:product</value>
+              </entry>
+              <entry>
+                <key>EffectiveDeliveryPolicy</key>
+                <value>{&quot;http&quot;:{&quot;defaultHealthyRetryPolicy&quot;:{&quot;minDelayTarget&quot;:20,&quot;maxDelayTarget&quot;:20,&quot;numRetries&quot;:3,&quot;numMaxDelayRetries&quot;:0,&quot;numNoDelayRetries&quot;:0,&quot;numMinDelayRetries&quot;:0,&quot;backoffFunction&quot;:&quot;linear&quot;},&quot;disableSubscriptionOverrides&quot;:false}}</value>
+              </entry>
+              <entry>
+                <key>SubscriptionsConfirmed</key>
+                <value>6</value>
+              </entry>
+              <entry>
+                <key>DisplayName</key>
+                <value/>
+              </entry>
+              <entry>
+                <key>SubscriptionsDeleted</key>
+                <value>0</value>
+              </entry>
+            </Attributes>
+          </GetTopicAttributesResult>
+          <ResponseMetadata>
+            <RequestId>dd21187d-48bf-5b56-945a-4de78c56d7b6</RequestId>
+          </ResponseMetadata>
+        </GetTopicAttributesResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 15:47:53 GMT
+- request:
+    method: post
+    uri: https://sns.sa-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=Subscribe&Endpoint=arn%3Aaws%3Asqs%3Asa-east-1%3A381158256258%3Asystem_name_production_product_updater_13_queue&Protocol=sqs&TopicArn=arn%3Aaws%3Asns%3Asa-east-1%3A381158256258%3Aproduct&Version=2010-03-31
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sns/1.18.0
+      Host:
+      - sns.sa-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T154753Z
+      X-Amz-Content-Sha256:
+      - bcfc945e03de795951a726f716a002fcad635c6d48425e3055099ad00bd912bc
+      Content-Length:
+      - '212'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - ad06c58f-4531-5735-b931-901581d805f0
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '357'
+      Date:
+      - Sat, 06 Jul 2019 15:47:53 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <SubscribeResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+          <SubscribeResult>
+            <SubscriptionArn>arn:aws:sns:sa-east-1:381158256258:product:de228b88-96a7-4852-9628-dc273804e413</SubscriptionArn>
+          </SubscribeResult>
+          <ResponseMetadata>
+            <RequestId>ad06c58f-4531-5735-b931-901581d805f0</RequestId>
+          </ResponseMetadata>
+        </SubscribeResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 15:47:53 GMT
+- request:
+    method: post
+    uri: https://sns.sa-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=SetSubscriptionAttributes&AttributeName=RawMessageDelivery&AttributeValue=true&SubscriptionArn=arn%3Aaws%3Asns%3Asa-east-1%3A381158256258%3Aproduct%3Ade228b88-96a7-4852-9628-dc273804e413&Version=2010-03-31
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sns/1.18.0
+      Host:
+      - sns.sa-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T154753Z
+      X-Amz-Content-Sha256:
+      - c46f9a6de1752f001f145a296e0fe4eedc461825c79477d3a4a0ac1600dcf831
+      Content-Length:
+      - '212'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 3e162ff2-7bab-5ada-a1d5-7a68bf42343d
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '229'
+      Date:
+      - Sat, 06 Jul 2019 15:47:53 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <SetSubscriptionAttributesResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">
+          <ResponseMetadata>
+            <RequestId>3e162ff2-7bab-5ada-a1d5-7a68bf42343d</RequestId>
+          </ResponseMetadata>
+        </SetSubscriptionAttributesResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 15:47:53 GMT
+- request:
+    method: post
+    uri: https://sqs.sa-east-1.amazonaws.com/381158256258/system_name_production_product_updater_13_queue
+    body:
+      encoding: UTF-8
+      string: Action=SetQueueAttributes&Attribute.1.Name=Policy&Attribute.1.Value=%7B%22Version%22%3A%222012-10-17%22%2C%22Id%22%3A%22arn%3Aaws%3Asqs%3Asa-east-1%3A381158256258%3Asystem_name_production_product_updater_13_queue%2FSQSDefaultPolicy%22%2C%22Statement%22%3A%5B%7B%22Sid%22%3A%22subscription_in_product%22%2C%22Effect%22%3A%22Allow%22%2C%22Principal%22%3A%7B%22AWS%22%3A%22%2A%22%7D%2C%22Action%22%3A%22SQS%3ASendMessage%22%2C%22Resource%22%3A%5B%22arn%3Aaws%3Asqs%3Asa-east-1%3A381158256258%3Asystem_name_production_product_updater_13_queue%22%5D%2C%22Condition%22%3A%7B%22ArnLike%22%3A%7B%22aws%3ASourceArn%22%3A%5B%22arn%3Aaws%3Asns%3Asa-east-1%3A381158256258%3Aproduct%22%5D%7D%7D%7D%5D%7D&QueueUrl=https%3A%2F%2Fsqs.sa-east-1.amazonaws.com%2F381158256258%2Fsystem_name_production_product_updater_13_queue&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.sa-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T154753Z
+      X-Amz-Content-Sha256:
+      - f35666f07f5f71cbcfd61f465c2121d0eb1e6f6678a216a5fb9f7e0b7b5fb340
+      Content-Length:
+      - '825'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 724537f7-05ce-536d-95c4-626dc124a6cd
+      Date:
+      - Sat, 06 Jul 2019 15:47:54 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '225'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><SetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>724537f7-05ce-536d-95c4-626dc124a6cd</RequestId></ResponseMetadata></SetQueueAttributesResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 15:47:54 GMT
+- request:
+    method: post
+    uri: https://sqs.us-east-1.amazonaws.com/
+    body:
+      encoding: UTF-8
+      string: Action=CreateQueue&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueName=system_name_production_product_adjuster_13_alert&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      Host:
+      - sqs.us-east-1.amazonaws.com
+      X-Amz-Date:
+      - 20190706T154754Z
+      X-Amz-Content-Sha256:
+      - 0e3fcec6ff828d944ffc757fcfe5efdc8f7452cec2625ef950d5efe3313e9290
+      Content-Length:
+      - '218'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 23d19f82-c052-5feb-bacd-ca1804b86760
+      Date:
+      - Sat, 06 Jul 2019 15:47:54 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '368'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>https://sqs.us-east-1.amazonaws.com/381158256258/system_name_production_product_adjuster_13_alert</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>23d19f82-c052-5feb-bacd-ca1804b86760</RequestId></ResponseMetadata></CreateQueueResponse>
+    http_version:
+  recorded_at: Sat, 06 Jul 2019 15:47:54 GMT
+recorded_with: VCR 5.0.0

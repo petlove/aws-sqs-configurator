@@ -45,7 +45,7 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
           expect(subject.environment).to be_nil
           expect(subject.metadata).to eq({})
           expect(subject.name_formatted).to eq('update_price')
-          expect(subject.arn).to eq('arn:aws:sns:us-east-1:123456789:update_price')
+          expect(subject.arn).to eq('arn:aws:sqs:us-east-1:123456789:update_price')
           expect(subject.visibility_timeout).to eq(60)
           expect(subject.max_receive_count).to eq(7)
           expect(subject.message_retention_period).to eq(1_209_600)
@@ -96,7 +96,7 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
           reference: 'product'
         )
         expect(subject.name_formatted).to eq('system_name_production_product_updater_queue.fifo')
-        expect(subject.arn).to eq('arn:aws:sns:sa-east-1:123456789:system_name_production_product_updater_queue.fifo')
+        expect(subject.arn).to eq('arn:aws:sqs:sa-east-1:123456789:system_name_production_product_updater_queue.fifo')
         expect(subject.visibility_timeout).to eq(40)
         expect(subject.max_receive_count).to eq(8)
         expect(subject.message_retention_period).to eq(1_000_000)
@@ -120,8 +120,7 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
         expect(subject.attributes[:ContentBasedDeduplication]).to eq('true')
         expect(subject.attributes[:VisibilityTimeout]).to eq('40')
         expect(subject.attributes[:MessageRetentionPeriod]).to eq('1000000')
-        expect(subject.attributes[:maxReceiveCount]).to eq('8')
-        expect(subject.attributes[:deadLetterTargetArn]).to eq('arn:aws:sns:sa-east-1:123456789:system_name_production_product_updater_queue_errors.fifo')
+        expect(subject.attributes[:RedrivePolicy]).to eq('{"maxReceiveCount":"8","deadLetterTargetArn":"arn:aws:sqs:sa-east-1:123456789:system_name_production_product_updater_queue_errors.fifo"}')
       end
     end
   end

@@ -15,7 +15,7 @@ Metrics/CyclomaticComplexity:
   Enabled: false
 
 Metrics/ClassLength:
-  Max: 130
+  Max: 170
 
 Metrics/BlockLength:
   Max: 30
@@ -26,5 +26,5 @@ Metrics/AbcSize:
   Max: 25
 
 AllCops:
-  TargetRubyVersion: 2.3.0
+  TargetRubyVersion: 2.6.3
   DisplayCopNames: true
