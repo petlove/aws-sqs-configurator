@@ -11,11 +11,6 @@ Simple configuration to create queues, topics and subscriptions (through [AWS::S
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'aws-sqs-configurator'
-```
-or the latest version:
-
-```ruby
 gem 'aws-sqs-configurator', github: 'petlove/aws-sqs-configurator'
 ```
 
@@ -86,6 +81,11 @@ rake sqs:create
 
 Output:
 ```bash
+[2019-07-06T12:51:51-03:00] [AWS::SNS::Configurator] INFO -- : Found: product - sa-east-1
+[2019-07-06T12:51:51-03:00] [AWS::SNS::Configurator] INFO -- : Subscribed: arn:aws:sqs:sa-east-1:381158256258:system_name_production_product_updater_9_queue -> product - sa-east-1
+[2019-07-06T12:51:51-03:00] [AWS::SQS::Configurator] INFO -- : Added policy: ["subscription_in_product"]
+[2019-07-06T12:51:51-03:00] [AWS::SQS::Configurator] INFO -- : Created: system_name_production_product_updater_9_queue - sa-east-1
+[2019-07-06T12:51:51-03:00] [AWS::SQS::Configurator] INFO -- : Created: system_name_production_product_adjuster_9_alert - us-east-1
 ```
 
 You could pass the option "force" to create them without check if they exist.
