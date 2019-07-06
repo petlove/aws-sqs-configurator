@@ -5,9 +5,7 @@ require 'aws/sqs/configurator'
 
 namespace :sqs do
   desc 'Create queues by config (./config/aws-sqs-configurator.yml)'
-  task :create do
-    options = ARGV[1..-1]
-    force = options.find { |option| ['force'].include?(option) }
-    AWS::SQS::Configurator.create!(force)
+  task :create, [:force] do |_t, args|
+    AWS::SQS::Configurator.create!(args[:force] == 'force')
   end
 end

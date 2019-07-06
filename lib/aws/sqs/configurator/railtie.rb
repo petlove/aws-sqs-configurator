@@ -4,7 +4,7 @@ require 'aws/sqs/configurator'
 require 'rails'
 
 module AWS
-  module SNS
+  module SQS
     module Configurator
       class Railtie < Rails::Railtie
         rake_tasks do
