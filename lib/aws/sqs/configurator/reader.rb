@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'yaml'
+require 'erb'
 
 module AWS
   module SQS
@@ -23,7 +24,7 @@ module AWS
         private
 
         def read_file!
-          YAML.safe_load(File.read(PATH)).tap(&method(:handle_options!))
+          YAML.safe_load(ERB.new(File.read(PATH)).result).tap(&method(:handle_options!))
         rescue Errno::ENOENT, WithoutContentError
           { queues: [] }
         end
