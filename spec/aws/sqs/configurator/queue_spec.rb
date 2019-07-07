@@ -110,8 +110,8 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
         expect(subject.topics.all? { |topic| topic.is_a?(AWS::SNS::Configurator::Topic) }).to be_truthy
         expect(subject.topics.length).to eq(1)
         expect(subject.topics.first.name).to eq('product')
-        expect(subject.topics.first.name_formatted).to eq('product')
-        expect(subject.topics.first.arn).to eq('arn:aws:sns:us-east-1:123456789:product')
+        expect(subject.topics.first.name_formatted).to eq('production_product')
+        expect(subject.topics.first.arn).to eq('arn:aws:sns:us-east-1:123456789:production_product')
       end
 
       it 'should have queues attributes' do

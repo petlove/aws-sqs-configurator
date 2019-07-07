@@ -113,8 +113,8 @@ module AWS
         end
 
         def dead_letter_options(options)
-          options.merge(dead_letter_queue: false, topics: [], suffix: [@suffix, @dead_letter_queue_suffix].compact
-          .join('_'))
+          options.merge(dead_letter_queue: false, topics: [], suffix: [@suffix, @dead_letter_queue_suffix]
+                 .compact.join('_'))
         end
 
         def build_attributes!
@@ -186,7 +186,7 @@ module AWS
         end
 
         def build_topics!(topics)
-          @topics = topics.map { |topic| AWS::SNS::Configurator::Topic.new(topic) }
+          @topics = topics.map { |topic| AWS::SNS::Configurator::Topic.new({ environment: @environment }.merge(topic)) }
         end
 
         def account_id
