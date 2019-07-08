@@ -9,7 +9,7 @@ module AWS
         def initialize(force = false)
           clear!
           @force = force
-          @queues = Reader.new.queues!
+          @queues = AWS::SQS::Configurator.queues!
         end
 
         def create!

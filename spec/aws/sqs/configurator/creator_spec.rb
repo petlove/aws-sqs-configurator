@@ -2,7 +2,7 @@
 
 RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
   describe '#initialize' do
-    before { stub_const('AWS::SQS::Configurator::Reader::PATH', './spec/fixtures/configs/aws-sqs-shoryuken.yml') }
+    before { stub_const('AWS::SQS::Configurator::Reader::MAIN_FILE', './spec/fixtures/configs/aws-sqs-shoryuken.yml') }
 
     it 'should have created and found empty' do
       expect(subject.created).to be_empty
@@ -18,7 +18,7 @@ RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
     let(:instance) { described_class.new(force) }
     subject { instance.create! }
 
-    before { stub_const('AWS::SQS::Configurator::Reader::PATH', "./spec/fixtures/configs/#{file}.yml") }
+    before { stub_const('AWS::SQS::Configurator::Reader::MAIN_FILE', "./spec/fixtures/configs/#{file}.yml") }
 
     context 'default' do
       let(:force) { false }
