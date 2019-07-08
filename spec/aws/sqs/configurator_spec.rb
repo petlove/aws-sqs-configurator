@@ -5,13 +5,13 @@ RSpec.describe AWS::SQS::Configurator do
     expect(AWS::SQS::Configurator::VERSION).not_to be nil
   end
 
-  describe '#read!' do
-    subject { described_class.read! }
+  describe '#queues!' do
+    subject { described_class.queues! }
 
     after { subject }
 
     it 'should use reader to get queues' do
-      expect_any_instance_of(described_class::Reader).to receive(:queues!)
+      expect_any_instance_of(described_class::Reader).to receive(:read!)
     end
   end
 

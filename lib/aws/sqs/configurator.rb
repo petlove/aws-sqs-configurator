@@ -6,6 +6,7 @@ require 'aws/sqs/configurator/logger'
 require 'aws/sqs/configurator/queue'
 require 'aws/sqs/configurator/reader'
 require 'aws/sqs/configurator/creator'
+require 'aws/sqs/configurator/package'
 require 'aws/sns/configurator'
 require 'aws-sdk-sqs'
 
@@ -15,8 +16,8 @@ module AWS
       require 'aws/sqs/configurator/railtie' if defined?(Rails)
 
       class << self
-        def read!
-          Reader.new.queues!
+        def queues!
+          Reader.new.read!
         end
 
         def create!(force)
