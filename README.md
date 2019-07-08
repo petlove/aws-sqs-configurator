@@ -104,6 +104,13 @@ or if you would like to force:
 AWS::SQS::Configurator.create!(true)
 ```
 
+#### Get queues by config
+
+You could get the topics in the config using this code:
+```ruby
+AWS::SQS::Configurator.queues!
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/petlove/aws-sns-configurator.
