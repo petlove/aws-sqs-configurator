@@ -7,8 +7,8 @@ module AWS
   module SQS
     module Configurator
       class Reader
-        MAIN_FILE = './config/aws-sqs-configurator.yml'
-        DIR_FILES = './config/aws-sqs-configurator/*'
+        MAIN_FILE = './config/aws-sqs-configurator.yml'.freeze
+        DIR_FILES = './config/aws-sqs-configurator/*'.freeze
 
         attr_accessor :packages
 
