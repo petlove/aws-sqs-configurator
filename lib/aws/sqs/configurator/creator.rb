@@ -44,12 +44,12 @@ module AWS
         end
 
         def add_created(queue)
-          Logger.info("Created: #{queue.name_formatted} - #{queue.region}")
+          Logger.info("Queue created: #{queue.name_formatted} - #{queue.region}")
           @created << queue
         end
 
         def add_found(queue)
-          Logger.info("Found: #{queue.name_formatted} - #{queue.region}")
+          Logger.info("Queue found: #{queue.name_formatted} - #{queue.region}")
           @found << queue
         end
       end

@@ -5,6 +5,7 @@ default:
     prefix: 'system_name'
     suffix: 'queue'
     environment: 'production'
+  queue:
     fifo: false
     content_based_deduplication: false
     max_receive_count: 7

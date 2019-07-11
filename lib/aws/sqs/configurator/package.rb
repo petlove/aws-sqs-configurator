@@ -8,9 +8,11 @@ module AWS
       class Package
         include ::Ruby::Utils
 
-        GENERAL_DEFAULT_OPTIONS = %i[region prefix suffix environment visibility_timeout max_receive_count
-                                     message_retention_period fifo dead_letter_queue dead_letter_queue_suffix
-                                     content_based_deduplication metadata].freeze
+        GENERAL_DEFAULT_OPTIONS = %i[region prefix suffix environment metadata].freeze
+        TOPIC_DEFAULT_OPTIONS = %i[region prefix suffix environment metadata].freeze
+        QUEUE_DEFAULT_OPTIONS = %i[region prefix suffix environment visibility_timeout max_receive_count
+                                   message_retention_period fifo dead_letter_queue dead_letter_queue_suffix
+                                   content_based_deduplication metadata].freeze
         GENERAL_DEFAULT_PATH = %i[default general].freeze
         TOPIC_DEFAULT_PATH = %i[default topic].freeze
         QUEUE_DEFAULT_PATH = %i[default queue].freeze
@@ -46,11 +48,11 @@ module AWS
         end
 
         def build_topic_default_options!
-          @topic_default_options = default_options(TOPIC_DEFAULT_PATH, GENERAL_DEFAULT_OPTIONS)
+          @topic_default_options = default_options(TOPIC_DEFAULT_PATH, TOPIC_DEFAULT_OPTIONS)
         end
 
         def build_queue_default_options!
-          @queue_default_options = default_options(QUEUE_DEFAULT_PATH, GENERAL_DEFAULT_OPTIONS)
+          @queue_default_options = default_options(QUEUE_DEFAULT_PATH, QUEUE_DEFAULT_OPTIONS)
         end
 
         def default_options(path, fields)
