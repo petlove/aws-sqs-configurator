@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
+require 'ruby/utils'
+
 module AWS
   module SQS
     module Configurator
       class Package
+        include ::Ruby::Utils
+
         GENERAL_DEFAULT_OPTIONS = %i[region prefix suffix environment visibility_timeout max_receive_count
                                      message_retention_period fifo dead_letter_queue dead_letter_queue_suffix
                                      content_based_deduplication metadata].freeze
@@ -50,7 +54,7 @@ module AWS
         end
 
         def default_options(path, fields)
-          @content.dig(*path).is_a?(Hash) ? @content.dig(*path).slice(*fields) : {}
+          slice(dig(@content, path, {}), fields)
         end
 
         def build_queue!(queue_options)
@@ -58,13 +62,19 @@ module AWS
         end
 
         def build_queue_options(queue_options)
-          @general_default_options.merge(@queue_default_options)
-                                  .merge(queue_options.compact).tap do |options|
-            options[:topics] = options[:topics]&.map do |topic|
-              @general_default_options.merge(@topic_default_options)
-                                      .merge(topic)
-            end
-          end
+          merge_queue_options(queue_options).tap { |queue| queue[:topics] = build_topics_options(queue[:topics]) }
+        end
+
+        def build_topics_options(topics)
+          topics ? topics.map(&method(:build_topic_options)) : []
+        end
+
+        def build_topic_options(topic)
+          @general_default_options.merge(@topic_default_options).merge(topic)
+        end
+
+        def merge_queue_options(queue_options)
+          @general_default_options.merge(@queue_default_options).merge(compact(queue_options))
         end
       end
     end

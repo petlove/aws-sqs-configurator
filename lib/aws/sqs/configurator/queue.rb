@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+require 'ruby/utils'
+
 module AWS
   module SQS
     module Configurator
       class Queue
         class RequiredFieldError < StandardError; end
+        include ::Ruby::Utils
 
         attr_accessor :name, :region, :prefix, :suffix, :environment, :metadata, :name_formatted, :arn, :topics,
                       :visibility_timeout, :max_receive_count, :message_retention_period, :fifo, :dead_letter_queue,
@@ -16,11 +19,11 @@ module AWS
         MESSAGE_RETETION_PERIOD_DEFAULT = 1_209_600
         FIFO_DEFAULT = false
         DEAD_LETTER_QUEUE_DEFAULT = false
-        DEAD_LETTER_QUEUE_SUFFIX_DEFAULT = 'failures'
+        DEAD_LETTER_QUEUE_SUFFIX_DEFAULT = 'failures'.freeze
         CONTENT_BASED_DEDUPLICATION_DEFAULT = false
-        POLICY_VERSION = '2012-10-17'
-        POLICY_EFFECT = 'Allow'
-        POLICY_ACTION = 'SQS:SendMessage'
+        POLICY_VERSION = '2012-10-17'.freeze
+        POLICY_EFFECT = 'Allow'.freeze
+        POLICY_ACTION = 'SQS:SendMessage'.freeze
 
         def initialize(options)
           options = normalize(options)
@@ -118,23 +121,23 @@ module AWS
         end
 
         def build_attributes!
-          @attributes = {
+          @attributes = compact({
             FifoQueue: fifo_queue_attribute,
             ContentBasedDeduplication: content_based_deduplication_attribute,
             VisibilityTimeout: @visibility_timeout.to_s,
             MessageRetentionPeriod: @message_retention_period.to_s
-          }.merge(redrive_policy).compact
+          }.merge(redrive_policy))
         end
 
         def redrive_policy
           return {} unless max_receive_count_attribute || dead_letter_target_arn_attribute
 
-          {
+          compact(
             RedrivePolicy: {
               maxReceiveCount: max_receive_count_attribute,
               deadLetterTargetArn: dead_letter_target_arn_attribute
-            }.compact.to_json
-          }
+            }.to_json
+          )
         end
 
         def fifo_queue_attribute
@@ -154,7 +157,7 @@ module AWS
         end
 
         def normalize(options)
-          options.is_a?(String) ? default_options(options) : default_options.merge(options.compact)
+          options.is_a?(String) ? default_options(options) : default_options.merge(compact(options))
         end
 
         def default_options(name = nil)
@@ -186,7 +189,7 @@ module AWS
         end
 
         def build_topics!(topics)
-          @topics = topics.map { |topic| AWS::SNS::Configurator::Topic.new({ environment: @environment }.merge(topic)) }
+          @topics = topics.map { |topic| AWS::SNS::Configurator::Topic.new(topic) }
         end
 
         def account_id
