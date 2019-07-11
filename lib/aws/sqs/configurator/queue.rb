@@ -71,7 +71,7 @@ module AWS
         end
 
         def log_policy
-          Logger.info("Added policy: #{topics_policy[:Statement].map { |s| s[:Sid] }}")
+          Logger.info("Added policy in the queue: #{topics_policy[:Statement].map { |s| s[:Sid] }}")
         end
 
         def topics_policy

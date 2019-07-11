@@ -61,13 +61,6 @@ RSpec.describe AWS::SQS::Configurator::Package, type: :model do
               prefix: 'system_name',
               suffix: 'queue',
               environment: 'production',
-              fifo: false,
-              content_based_deduplication: false,
-              max_receive_count: 7,
-              dead_letter_queue: false,
-              dead_letter_queue_suffix: 'failures',
-              visibility_timeout: 60,
-              message_retention_period: 1_209_600,
               metadata: {
                 priority: 1
               }
@@ -123,13 +116,6 @@ RSpec.describe AWS::SQS::Configurator::Package, type: :model do
               prefix: 'system_name',
               suffix: 'queue',
               environment: 'production',
-              fifo: false,
-              content_based_deduplication: false,
-              max_receive_count: 7,
-              dead_letter_queue: false,
-              dead_letter_queue_suffix: 'failures',
-              visibility_timeout: 60,
-              message_retention_period: 1_209_600,
               metadata: {
                 priority: 1
               }
@@ -206,13 +192,6 @@ RSpec.describe AWS::SQS::Configurator::Package, type: :model do
           prefix: 'system_name',
           suffix: 'queue',
           environment: 'production',
-          fifo: false,
-          content_based_deduplication: false,
-          max_receive_count: 7,
-          dead_letter_queue: false,
-          dead_letter_queue_suffix: 'failures',
-          visibility_timeout: 60,
-          message_retention_period: 1_209_600,
           metadata: {
             priority: 1
           }

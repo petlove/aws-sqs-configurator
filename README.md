@@ -20,35 +20,67 @@ gem 'aws-sqs-configurator', github: 'petlove/aws-sqs-configurator'
 Set the config in _/config/aws-sqs-configurator.yml_ like this:
 ```yml
 ---
-region: 'us-east-1'
-prefix: 'system_name'
-suffix: 'queue'
-environment: 'production'
-fifo: false
-content_based_deduplication: false
-max_receive_count: 7
-dead_letter_queue: true
-dead_letter_queue_suffix: 'failures'
-visibility_timeout: 60
-message_retention_period: 1209600
+default:
+  general:
+    region: 'us-east-1'
+    prefix: 'system_name'
+    suffix: 'topic'
+    environment: 'production'
+    metadata:
+      type: Square
+  queue:
+    region: 'us-east-1'
+    prefix: 'system_name'
+    suffix: 'queue'
+    environment: 'production'
+    fifo: false
+    content_based_deduplication: false
+    max_receive_count: 7
+    dead_letter_queue: true
+    dead_letter_queue_suffix: 'failures'
+    visibility_timeout: 60
+    message_retention_period: 1209600
+    metadata:
+      type: Hexagon
+  topic:
+    region: 'us-east-1'
+    prefix: 'system_name'
+    suffix: 'topic'
+    environment: 'production'
+    metadata:
+      type: Triangle
 queues:
   - name: 'product_updater'
-    region: 'sa-east-1'
+    region: 'us-east-1'
+    prefix: 'system_name'
+    suffix: 'queue'
+    environment: 'production'
+    fifo: false
+    content_based_deduplication: false
+    max_receive_count: 7
+    dead_letter_queue: true
+    dead_letter_queue_suffix: 'failures'
+    visibility_timeout: 60
+    message_retention_period: 1209600
     metadata:
-      type: 'strict'
-      reference: 'product'
+      type: Circle
     topics:
         - name: 'product'
           region: 'sa-east-1'
-  - name: 'product_adjuster'
-    suffix: 'alert'
-    dead_letter_queue: false
+          prefix: 'system_name'
+          suffix: 'topic'
+          environment: 'production'
+          metadata:
+            type: Another object
 ```
-
-Out of queues list, you should define default options that won't be required in the queue options. The available options are:
-
 | Name | Default | Required | What's it |
 |------|---------|----------|-----------|
+| `default` | `nil` | false | The default values. It allows `general` and `topic`. |
+| `general` | `nil` | false | The general default values. It allows `region`, `prefix`, `suffix`, `environment` and `metadata`. |
+| `topic` | `nil` | false | The topic default values. The values overwrite `general` values. It allows `region`, `prefix`, `suffix`, `environment` and `metadata`. |
+| `queue` | `nil` | false | The topic default values. The values overwrite `general` values. It allows `region`, `prefix`, `suffix`, `environment`, `fifo`, `content_based_deduplication`, `max_receive_count`, `dead_letter_queue`, `dead_letter_queue_suffix`, `visibility_timeout`, `message_retention_period` and `metadata`. |
+| `queues` | `[]` | yes | The queues list. |
+| `name` | `nil` | yes | The queue/topic name. |
 | `region` | `nil` | yes | The AWS region. |
 | `prefix` | `nil` | no | The queue name prefix. It's inserted before the `environment`.|
 | `suffix` | `nil` | no | The queue name suffix. It's inserted after the `name`. |
@@ -60,8 +92,6 @@ Out of queues list, you should define default options that won't be required in 
 | `dead_letter_queue_suffix` | `'_failures'` | no | The dead letter queue suffix. |
 | `visibility_timeout` | `60` | no | The queue visibility timeout in seconds. See more [here](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html).|
 | `message_retention_period` | `1209600` | no | The queue message retention period in seconds. See more [here](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-architecture.html).|
-| `queues` | `[]` | yes | The queues list. |
-| `name` | `nil` | yes | The queue/topic name. |
 | `metadata` | `{}` | no | Any data that you want put inside the queue to identify it after read the config. |
 | `topics` | `[]` | no | The topics that the queue will be subscribed. |
 
@@ -76,7 +106,7 @@ You should declare these environments to this gem works as well:
 
 If you are using [Ruby on Rails](https://github.com/rails/rails), you could use this rake task:
 ```bash
-rake sqs:create
+rake aws:sqs:create
 ```
 
 Output:
