@@ -16,11 +16,12 @@ queues:
   - name: 'product_updater'
     region: 'sa-east-1'
     metadata:
-      type: 'strict'
-      reference: 'product'
+      priority: 1
     topics:
         - name: 'product'
           region: 'sa-east-1'
   - name: 'product_adjuster'
     suffix: 'alert'
     dead_letter_queue: false
+    metadata:
+      priority: 2
