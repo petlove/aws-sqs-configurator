@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/petlove/ruby-utils.git
-  revision: 364c67b0d379fb262784f00cefe1fc9bbc6fe808
+  revision: 07cb53508deeca89b2d95253b9f35f57198bf682
   specs:
     ruby-utils (0.1.0)
 
