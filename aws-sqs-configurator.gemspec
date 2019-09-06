@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.2.10'
 
-  spec.add_dependency 'aws-sdk-sqs', '~> 1.18.0'
+  spec.add_dependency 'aws-sdk-sqs', '>= 1.18', '< 1.23'
   spec.add_dependency 'aws-sns-configurator', '~> 0.1.0'
   spec.add_dependency 'ruby-utils', '>= 0.1.0'
 
