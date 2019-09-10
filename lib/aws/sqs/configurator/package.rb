@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
-require 'ruby/utils'
-
 module AWS
   module SQS
     module Configurator
       class Package
-        include ::Ruby::Utils
-
         GENERAL_DEFAULT_OPTIONS = %i[region prefix suffix environment metadata].freeze
         TOPIC_DEFAULT_OPTIONS = %i[region prefix suffix environment metadata].freeze
         QUEUE_DEFAULT_OPTIONS = %i[region prefix suffix environment visibility_timeout max_receive_count
@@ -56,7 +52,7 @@ module AWS
         end
 
         def default_options(path, fields)
-          slice(dig(@content, path, {}), fields)
+          (@content&.dig(*path) || {}).slice(*fields)
         end
 
         def build_queue!(queue_options)
@@ -76,7 +72,7 @@ module AWS
         end
 
         def merge_queue_options(queue_options)
-          @general_default_options.merge(@queue_default_options).merge(compact(queue_options))
+          @general_default_options.merge(@queue_default_options).merge(queue_options.compact)
         end
       end
     end
