@@ -1,14 +1,10 @@
 # frozen_string_literal: true
 
-require 'ruby/utils'
-
 module AWS
   module SQS
     module Configurator
       class Queue
         class RequiredFieldError < StandardError; end
-        include ::Ruby::Utils
-
         attr_accessor :name, :region, :prefix, :suffix, :environment, :metadata, :name_formatted, :arn, :topics,
                       :visibility_timeout, :max_receive_count, :message_retention_period, :fifo, :dead_letter_queue,
                       :dead_letter_queue_suffix, :content_based_deduplication, :attributes, :dead_letter, :url
@@ -19,11 +15,11 @@ module AWS
         MESSAGE_RETETION_PERIOD_DEFAULT = 1_209_600
         FIFO_DEFAULT = false
         DEAD_LETTER_QUEUE_DEFAULT = false
-        DEAD_LETTER_QUEUE_SUFFIX_DEFAULT = 'failures'.freeze
+        DEAD_LETTER_QUEUE_SUFFIX_DEFAULT = 'failures'
         CONTENT_BASED_DEDUPLICATION_DEFAULT = false
-        POLICY_VERSION = '2012-10-17'.freeze
-        POLICY_EFFECT = 'Allow'.freeze
-        POLICY_ACTION = 'SQS:SendMessage'.freeze
+        POLICY_VERSION = '2012-10-17'
+        POLICY_EFFECT = 'Allow'
+        POLICY_ACTION = 'SQS:SendMessage'
 
         def initialize(options)
           options = normalize(options)
@@ -121,23 +117,23 @@ module AWS
         end
 
         def build_attributes!
-          @attributes = compact({
+          @attributes = {
             FifoQueue: fifo_queue_attribute,
             ContentBasedDeduplication: content_based_deduplication_attribute,
             VisibilityTimeout: @visibility_timeout.to_s,
             MessageRetentionPeriod: @message_retention_period.to_s
-          }.merge(redrive_policy))
+          }.merge(redrive_policy).compact
         end
 
         def redrive_policy
           return {} unless max_receive_count_attribute || dead_letter_target_arn_attribute
 
-          compact(
+          {
             RedrivePolicy: {
               maxReceiveCount: max_receive_count_attribute,
               deadLetterTargetArn: dead_letter_target_arn_attribute
             }.to_json
-          )
+          }.compact
         end
 
         def fifo_queue_attribute
@@ -157,7 +153,7 @@ module AWS
         end
 
         def normalize(options)
-          options.is_a?(String) ? default_options(options) : default_options.merge(compact(options))
+          options.is_a?(String) ? default_options(options) : default_options.merge(options.compact)
         end
 
         def default_options(name = nil)

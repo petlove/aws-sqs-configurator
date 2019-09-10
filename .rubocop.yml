@@ -26,5 +26,5 @@ Metrics/AbcSize:
   Max: 25
 
 AllCops:
-  TargetRubyVersion: 2.2.10
+  TargetRubyVersion: 2.5.6
   DisplayCopNames: true

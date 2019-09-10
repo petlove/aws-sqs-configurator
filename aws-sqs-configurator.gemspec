@@ -17,12 +17,12 @@ Gem::Specification.new do |spec|
 
   spec.files         = Dir['{lib}/**/*', 'CHANGELOG.md', 'MIT-LICENSE', 'README.md']
   spec.require_paths = ['lib']
-  spec.required_ruby_version = '>= 2.2.10'
+  spec.required_ruby_version = '>= 2.5.6'
 
+  spec.add_dependency 'aws-sdk-core', '~> 3'
   spec.add_dependency 'aws-sdk-sqs', '>= 1.18', '< 1.23'
-  spec.add_dependency 'aws-sns-configurator', '~> 0.1.0'
-  spec.add_dependency 'ruby-utils', '>= 0.1.0'
+  spec.add_dependency 'aws-sns-configurator', '~> 0.2.0'
 
-  spec.add_development_dependency 'bundler', '~> 1.17.3'
+  spec.add_development_dependency 'bundler', '~> 2.0.2'
   spec.add_development_dependency 'rake', '~> 12.3'
 end
