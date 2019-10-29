@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.5.6'
 
   spec.add_dependency 'aws-sdk-core', '~> 3'
-  spec.add_dependency 'aws-sdk-sqs', '>= 1.18', '< 1.23'
+  spec.add_dependency 'aws-sdk-sqs', '>= 1.18', '< 1.24'
   spec.add_dependency 'aws-sns-configurator', '~> 0.2.0'
 
   spec.add_development_dependency 'bundler', '~> 2.0.2'
