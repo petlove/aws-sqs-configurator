@@ -21,21 +21,10 @@ module AWS
             topics = queues.map(&:topics).flatten.sort_by(&:arn).uniq
             queues.each { |queue| queue.topics = topics }
           end.flatten
-          validate_queue_conflicts(all_queues)
           all_queues.uniq(&:to_json)
         end
 
         private
-
-        def validate_queue_conflicts(queues)
-          uniq_queues = queues.uniq(&:to_json)
-          return if uniq_queues.length == uniq_queues.map(&:arn).uniq.length
-
-          uniq_queues.group_by(&:arn).each do |k, v|
-            puts "Conflicting configuration found for #{k}" if v.length > 1
-          end
-          raise
-        end
 
         def file_names
           Dir[DIR_FILES] << MAIN_FILE
