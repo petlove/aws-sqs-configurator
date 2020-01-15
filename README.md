@@ -141,6 +141,13 @@ You could get the topics in the config using this code:
 AWS::SQS::Configurator.queues!
 ```
 
+#### Logging
+
+AWS::SQS:Configurator logs all the queues created in SQS by default. If you want to disable it you can pass `AWS_SQS_CONFIGURATOR_LOGGER=false` before running it.
+```bash
+AWS_SQS_CONFIGURATOR_LOGGER=false rake aws:sqs:create
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/petlove/aws-sns-configurator.
