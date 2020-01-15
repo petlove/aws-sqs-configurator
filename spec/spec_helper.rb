@@ -11,6 +11,8 @@ require 'config/vcr_config'
 require 'config/factory_bot_config'
 require 'pry'
 
+ENV['AWS_SQS_CONFIGURATOR_LOGGER'] = 'false'
+
 Dotenv.load('.env.test')
 VCRConfig.configure
 
