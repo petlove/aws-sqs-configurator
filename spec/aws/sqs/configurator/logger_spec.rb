@@ -39,6 +39,10 @@ RSpec.describe AWS::SQS::Configurator::Logger, type: :module do
     after { subject }
 
     context 'when AWS_SQS_CONFIGURATOR_LOGGER is not set' do
+      before do
+        allow(ENV).to receive(:[]).with(described_class::LOGGER_ENABLED_ENV).and_return(nil)
+      end
+
       it 'should call log_info' do
         expect(described_class).to receive(:log_info)
           .with('The topic was created successfully').once
@@ -51,7 +55,7 @@ RSpec.describe AWS::SQS::Configurator::Logger, type: :module do
 
     context 'when AWS_SQS_CONFIGURATOR_LOGGER is set to false' do
       before do
-        allow(ENV).to receive(:[]).with('AWS_SQS_CONFIGURATOR_LOGGER').and_return('false')
+        allow(ENV).to receive(:[]).with(described_class::LOGGER_ENABLED_ENV).and_return('false')
       end
 
       it 'shouldnt call log_info' do
@@ -70,6 +74,10 @@ RSpec.describe AWS::SQS::Configurator::Logger, type: :module do
     after { subject }
 
     context 'when AWS_SQS_CONFIGURATOR_LOGGER is not set' do
+      before do
+        allow(ENV).to receive(:[]).with(described_class::LOGGER_ENABLED_ENV).and_return(nil)
+      end
+
       it 'should call log_info' do
         expect(described_class).to receive(:log_error)
           .with('The topic had an error').once
