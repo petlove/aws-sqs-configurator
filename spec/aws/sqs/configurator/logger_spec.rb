@@ -38,13 +38,29 @@ RSpec.describe AWS::SQS::Configurator::Logger, type: :module do
 
     after { subject }
 
-    it 'should call log_info' do
-      expect(described_class).to receive(:log_info)
-        .with('The topic was created successfully').once
+    context 'when AWS_SQS_CONFIGURATOR_LOGGER is not set' do
+      it 'should call log_info' do
+        expect(described_class).to receive(:log_info)
+          .with('The topic was created successfully').once
+      end
+
+      it 'should print with puts' do
+        expect(described_class).to receive(:puts).once
+      end
     end
 
-    it 'should print with puts' do
-      expect(described_class).to receive(:puts).once
+    context 'when AWS_SQS_CONFIGURATOR_LOGGER is set to false' do
+      before do
+        allow(ENV).to receive(:[]).with('AWS_SQS_CONFIGURATOR_LOGGER').and_return('false')
+      end
+
+      it 'shouldnt call log_info' do
+        expect(described_class).to_not receive(:log_info)
+      end
+
+      it 'shouldnt print with puts' do
+        expect(described_class).to_not receive(:puts)
+      end
     end
   end
 
@@ -53,13 +69,29 @@ RSpec.describe AWS::SQS::Configurator::Logger, type: :module do
 
     after { subject }
 
-    it 'should call log_info' do
-      expect(described_class).to receive(:log_error)
-        .with('The topic had an error').once
+    context 'when AWS_SQS_CONFIGURATOR_LOGGER is not set' do
+      it 'should call log_info' do
+        expect(described_class).to receive(:log_error)
+          .with('The topic had an error').once
+      end
+
+      it 'should print with puts' do
+        expect(described_class).to receive(:puts).once
+      end
     end
 
-    it 'should print with puts' do
-      expect(described_class).to receive(:puts).once
+    context 'when AWS_SQS_CONFIGURATOR_LOGGER is set to false' do
+      before do
+        allow(ENV).to receive(:[]).with(described_class::LOGGER_ENABLED_ENV).and_return('false')
+      end
+
+      it 'shouldnt call log_info' do
+        expect(described_class).to_not receive(:log_error)
+      end
+
+      it 'shouldnt print with puts' do
+        expect(described_class).to_not receive(:puts)
+      end
     end
   end
 end

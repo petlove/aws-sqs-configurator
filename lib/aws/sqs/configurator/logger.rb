@@ -26,7 +26,7 @@ module AWS
           private
 
           def log?
-            ENV[LOGGER_ENABLED_ENV]
+            ENV[LOGGER_ENABLED_ENV] != 'false'
           end
 
           def log(severity_level, message)
