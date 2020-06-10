@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/petlove/aws-sns-configurator.git
-  revision: bf5cd568d6be78a457c3d2e47b840e8196b1d5cc
+  revision: 1a9f5dd5554fc5bb1cd95acbddd77cfee064b981
   specs:
     aws-sns-configurator (0.2.1)
       aws-sdk-core (~> 3)
@@ -29,7 +29,7 @@ GEM
     ast (2.4.0)
     awesome_print (1.8.0)
     aws-eventstream (1.1.0)
-    aws-partitions (1.326.0)
+    aws-partitions (1.327.0)
     aws-sdk-core (3.98.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
