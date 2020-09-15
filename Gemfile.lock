@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/petlove/aws-sns-configurator.git
-  revision: bce2d3ae701d8308d5b94759bb4d2dbd829a6ba1
+  revision: 55d45e30de9e85dddbbdc9b53c342b67762ef9c2
   specs:
     aws-sns-configurator (0.2.1)
       aws-sdk-core (~> 3)
