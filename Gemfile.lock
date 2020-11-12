@@ -100,7 +100,7 @@ GEM
     simplecov (0.19.1)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
-    simplecov-console (0.7.2)
+    simplecov-console (0.8.0)
       ansi
       simplecov
       terminal-table
@@ -108,7 +108,7 @@ GEM
     simplecov-summary (0.0.6)
       colorize
       simplecov
-    terminal-table (1.8.0)
+    terminal-table (2.0.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thread_safe (0.3.6)
     tzinfo (1.2.7)
