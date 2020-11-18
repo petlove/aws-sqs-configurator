@@ -6,7 +6,7 @@ module AWS
       class Creator
         attr_accessor :queues, :force, :created, :found
 
-        def initialize(force = false)
+        def initialize(force: false)
           clear!
           @force = force
           @queues = AWS::SQS::Configurator.queues!

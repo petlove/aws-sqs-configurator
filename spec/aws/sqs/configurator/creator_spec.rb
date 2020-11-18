@@ -15,7 +15,7 @@ RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
   end
 
   describe '#create!' do
-    let(:instance) { described_class.new(force) }
+    let(:instance) { described_class.new(force: force) }
     subject { instance.create! }
 
     before { stub_const('AWS::SQS::Configurator::Reader::MAIN_FILE', "./spec/fixtures/configs/#{file}.yml") }
