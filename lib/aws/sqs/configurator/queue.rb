@@ -54,7 +54,7 @@ module AWS
         end
 
         def subscribe!(topic)
-          AWS::SNS::Configurator.create!(false, topic)
+          AWS::SNS::Configurator.create!(topic, force: false)
           AWS::SNS::Configurator.subscribe!({
                                               name: topic.name_formatted,
                                               region: topic.region
