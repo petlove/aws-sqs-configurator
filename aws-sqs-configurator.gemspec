@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'aws-sdk-sqs', '>= 1.18', '< 1.35'
   spec.add_dependency 'aws-sns-configurator', '~> 0.2.0'
 
-  spec.add_development_dependency 'bundler', '~> 2.1.0'
+  spec.add_development_dependency 'bundler', '~> 2.2.7'
   spec.add_development_dependency 'rake', '~> 13.0'
 end
