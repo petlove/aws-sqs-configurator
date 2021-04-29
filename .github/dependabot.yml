@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "00:00"
+    timezone: America/Sao_Paulo
+  pull-request-branch-name:
+    separator: "-"
+  ignore:
+  - dependency-name: bundler
+    versions:
+    - 2.2.10
+    - 2.2.11
+    - 2.2.12
+    - 2.2.13
+    - 2.2.14
+    - 2.2.7
+    - 2.2.8
+    - 2.2.9
+  - dependency-name: rubocop
+    versions:
+    - 1.10.0
+    - 1.11.0
+    - 1.12.0
+    - 1.9.0
+    - 1.9.1
+  rebase-strategy: disabled
