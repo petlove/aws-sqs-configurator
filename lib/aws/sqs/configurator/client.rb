@@ -4,10 +4,21 @@ module AWS
   module SQS
     module Configurator
       class Client
-        attr_accessor :aws
+        attr_reader :region
 
         def initialize(region)
-          @aws = Aws::SQS::Client.new(region: region)
+          @region = region
+        end
+
+        def aws
+          @aws ||= Aws::SQS::Client.new(options)
+        end
+
+        def options
+          {
+            region: region,
+            endpoint: ENV['AWS_SQS_ENDPOINT']
+          }
         end
       end
     end
