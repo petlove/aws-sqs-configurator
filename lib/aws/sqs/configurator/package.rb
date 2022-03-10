@@ -4,7 +4,7 @@ module AWS
   module SQS
     module Configurator
       class Package
-        GENERAL_DEFAULT_OPTIONS = %i[region prefix suffix environment metadata].freeze
+        GENERAL_DEFAULT_OPTIONS = %i[region prefix suffix environment endpoint metadata].freeze
         TOPIC_DEFAULT_OPTIONS = %i[region prefix suffix environment metadata].freeze
         QUEUE_DEFAULT_OPTIONS = %i[region prefix suffix environment visibility_timeout max_receive_count
                                    message_retention_period fifo dead_letter_queue dead_letter_queue_suffix
