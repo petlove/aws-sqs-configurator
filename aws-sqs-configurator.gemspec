@@ -25,4 +25,18 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler', '~> 2.1.0'
   spec.add_development_dependency 'rake', '~> 13.0'
+
+  spec.add_development_dependency 'awesome_print'
+  spec.add_development_dependency 'dotenv'
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop-performance'
+  spec.add_development_dependency 'factory_bot'
+  spec.add_development_dependency 'hashdiff', '>= 1.0.0.beta1', '< 2.0.0'
+  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'simplecov-console'
+  spec.add_development_dependency 'simplecov-summary'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock'
 end
