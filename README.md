@@ -1,8 +1,6 @@
 # [AWS::SQS::Configurator](https://github.com/petlove/aws-sqs-configurator)
 
-[![Build Status](https://travis-ci.org/petlove/aws-sqs-configurator.svg?branch=master)](https://travis-ci.org/petlove/aws-sns-configurator)
-[![Maintainability](https://api.codeclimate.com/v1/badges/62a68418dca81785bfa3/maintainability)](https://codeclimate.com/github/petlove/aws-sqs-configurator/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/62a68418dca81785bfa3/test_coverage)](https://codeclimate.com/github/petlove/aws-sqs-configurator/test_coverage)
+[![Run specs](https://github.com/petlove/aws-sqs-configurator/actions/workflows/specs.yml/badge.svg)](https://github.com/petlove/aws-sqs-configurator/actions/workflows/specs.yml)
 
 Simple configuration to create queues, topics and subscriptions (through [AWS::SNS::Configurator](https://github.com/petlove/aws-sns-configurator)).
 
