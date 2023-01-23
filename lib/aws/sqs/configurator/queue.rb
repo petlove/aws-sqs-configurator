@@ -62,15 +62,24 @@ module AWS
         end
 
         def queue_topics_policy!(client)
-          client.aws.set_queue_attributes(queue_url: @url, attributes: { Policy: topics_policy.to_json })
+          existing_arns = extract_existing_arns(client)
+          client.aws.set_queue_attributes(queue_url: @url, attributes: { Policy: topics_policy(existing_arns).to_json })
                 .tap { log_policy }
+        end
+
+        def extract_existing_arns(client)
+          policy = client.aws.get_queue_attributes(queue_url: @url, attribute_names: ['Policy']).attributes['Policy']
+          return unless policy
+
+          JSON.parse(policy).dig('Statement', 0, 'Condition', 'ArnLike', 'aws:SourceArn')
         end
 
         def log_policy
           Logger.info("Added policy in the queue: #{topics_policy[:Statement].map { |s| s[:Sid] }}")
         end
 
-        def topics_policy
+        def topics_policy(existing_arns = nil)
+          new_topics = (@topics.map(&:arn) + [existing_arns]).flatten.compact.uniq
           {
             Version: POLICY_VERSION,
             Id: "#{@arn}/SQSDefaultPolicy",
@@ -83,7 +92,7 @@ module AWS
                 Resource: [@arn],
                 Condition: {
                   ArnLike: {
-                    'aws:SourceArn' => @topics.map(&:arn)
+                    'aws:SourceArn' => new_topics
                   }
                 }
               }

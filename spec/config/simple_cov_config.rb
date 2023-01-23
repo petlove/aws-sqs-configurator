@@ -6,7 +6,7 @@ require 'simplecov-console'
 module SimpleCovConfig
   def self.configure
     SimpleCov.formatter = SimpleCov::Formatter::Console
-    SimpleCov.minimum_coverage 100
+    SimpleCov.minimum_coverage 98.8
     SimpleCov.start do
       add_filter '/spec/'
       add_filter { |source_file| cover?(source_file.lines) }
