@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
+  before do
+    allow_any_instance_of(AWS::SQS::Configurator::Queue).to receive(:extract_existing_arns).and_return nil
+  end
+
   describe '#initialize' do
     before { stub_const('AWS::SQS::Configurator::Reader::MAIN_FILE', './spec/fixtures/configs/aws-sqs-shoryuken.yml') }
 
