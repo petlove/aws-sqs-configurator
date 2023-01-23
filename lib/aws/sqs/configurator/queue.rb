@@ -181,7 +181,10 @@ module AWS
         end
 
         def build_url!
-          @url = ["https://sqs.#{@region}.amazonaws.com", account_id, @name_formatted].compact.join('/')
+          prefix =
+            ENV['AWS_SQS_ENDPOINT'].to_s.empty? ? "https://sqs.#{@region}.amazonaws.com" : ENV['AWS_SQS_ENDPOINT']
+
+          @url = [prefix, account_id, @name_formatted].compact.join('/')
         end
 
         def build_topics!(topics)
