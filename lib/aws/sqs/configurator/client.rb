@@ -7,7 +7,7 @@ module AWS
         attr_accessor :aws
 
         def initialize(region)
-          @aws = Aws::SQS::Client.new({ region: region, endpoint: ENV['AWS_SQS_ENDPOINT'] }.compact)
+          @aws = Aws::SQS::Client.new(region: region)
         end
       end
     end
