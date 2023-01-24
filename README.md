@@ -116,20 +116,12 @@ Output:
 [2019-07-06T12:51:51-03:00] [AWS::SQS::Configurator] INFO -- : Created: system_name_production_product_adjuster_9_alert - us-east-1
 ```
 
-You could pass the option "force" to create them without check if they exist.
-
 #### Create
 
 You could create topics using this code:
 
 ```ruby
 AWS::SQS::Configurator.create!
-```
-
-or if you would like to force:
-
-```ruby
-AWS::SQS::Configurator.create!(true)
 ```
 
 #### Get queues by config

@@ -20,8 +20,8 @@ module AWS
           Reader.new.read!
         end
 
-        def create!(force: false)
-          Creator.new(force: force).create!
+        def create!
+          Creator.new.create!
         end
       end
     end

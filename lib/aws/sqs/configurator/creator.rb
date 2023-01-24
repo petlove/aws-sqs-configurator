@@ -4,11 +4,10 @@ module AWS
   module SQS
     module Configurator
       class Creator
-        attr_accessor :queues, :force, :created, :found
+        attr_accessor :queues, :created, :found
 
-        def initialize(force: false)
+        def initialize
           clear!
-          @force = force
           @queues = AWS::SQS::Configurator.queues!
         end
 
@@ -25,7 +24,7 @@ module AWS
         def create_by_region(region, queues)
           client = Client.new(region)
 
-          queues.each { |queue| create_queue(queue, client) if @force || !find_queue(queue, client) }
+          queues.each { |queue| create_queue(queue, client) }
         end
 
         def find_queue(queue, client)
@@ -33,7 +32,7 @@ module AWS
         end
 
         def create_queue(queue, client)
-          queue.dead_letter.create!(client) if queue.dead_letter && (@force || !find_queue(queue.dead_letter, client))
+          queue.dead_letter.create!(client) if queue.dead_letter && !find_queue(queue.dead_letter, client)
           queue.create!(client)
           add_created(queue)
         end
