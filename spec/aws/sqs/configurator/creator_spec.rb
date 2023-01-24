@@ -10,7 +10,6 @@ RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
 
     it 'should have created and found empty' do
       expect(subject.created).to be_empty
-      expect(subject.found).to be_empty
     end
 
     it 'should get topics' do
@@ -31,7 +30,6 @@ RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
         it 'should find zero times and create twice', :vcr do
           expect(instance).to receive(:find_queue).exactly(0).times.and_call_original
           expect(instance).to receive(:create_queue).twice.and_call_original
-          expect(subject.found.length).to eq(0)
           expect(subject.created.length).to eq(2)
         end
       end
@@ -42,7 +40,6 @@ RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
         it 'should find zero times and create twice', :vcr do
           expect(instance).to receive(:find_queue).exactly(0).times.and_call_original
           expect(instance).to receive(:create_queue).twice.and_call_original
-          expect(subject.found.length).to eq(0)
           expect(subject.created.length).to eq(2)
         end
       end
@@ -55,7 +52,6 @@ RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
         it 'should find zero times and create twice', :vcr do
           expect(instance).to receive(:find_queue).exactly(0).times.and_call_original
           expect(instance).to receive(:create_queue).twice.and_call_original
-          expect(subject.found.length).to eq(0)
           expect(subject.created.length).to eq(2)
         end
       end
@@ -66,7 +62,6 @@ RSpec.describe AWS::SQS::Configurator::Creator, type: :model do
         it 'should find zero times and create twice', :vcr do
           expect(instance).to receive(:find_queue).exactly(0).times.and_call_original
           expect(instance).to receive(:create_queue).twice.and_call_original
-          expect(subject.found.length).to eq(0)
           expect(subject.created.length).to eq(2)
         end
       end

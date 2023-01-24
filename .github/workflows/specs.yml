@@ -18,7 +18,8 @@ jobs:
         env:
           RAILS_ENV: test
           GEMFILE_RUBY_VERSION: 2.7.2
-          AWS_ACCOUNT_ID: '381158256258'
+          AWS_SQS_ENDPOINT: 'http://localstack:4566'
+          AWS_ACCOUNT_ID: '000000000000'
           AWS_ACCESS_KEY_ID: 'random'
           AWS_SECRET_KEY: 'random'
           AWS_SNS_CONFIGURATOR_LOGGER: true

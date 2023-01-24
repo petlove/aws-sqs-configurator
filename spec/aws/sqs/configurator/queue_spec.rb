@@ -133,7 +133,7 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       let(:queue) { described_class.new(name: 'fifo_queue', fifo: true, region: 'us-east-1') }
 
       it 'should create the queue', :vcr do
-        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/fifo_queue.fifo")
+        expect(subject.queue_url).to include("#{ENV['AWS_ACCOUNT_ID']}/fifo_queue.fifo")
       end
     end
 
@@ -141,20 +141,18 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       let(:queue) { described_class.new(name: 'standard_queue', region: 'us-east-1') }
 
       it 'should create the queue', :vcr do
-        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
+        expect(subject.queue_url).to include("#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
       end
     end
 
     context 'when queue already exists', :vcr do
       before do
-        described_class.new(options.merge(
-          topics: [
-            {
-              name: 'existing_topic_product',
-              region: 'us-east-1'
-            }
-          ]
-        )).create!(client)
+        described_class.new(options.merge(topics: [
+                                            {
+                                              name: 'existing_topic_product',
+                                              region: 'us-east-1'
+                                            }
+                                          ])).create!(client)
       end
 
       let(:queue) { described_class.new(options) }
@@ -214,7 +212,7 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       let(:queue) { described_class.new(name: 'standard_queue', region: 'us-east-1') }
 
       it 'should find the queue', :vcr do
-        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
+        expect(subject.queue_url).to include("#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
       end
     end
   end
