@@ -14,6 +14,9 @@ require 'pry'
 ENV['AWS_SQS_CONFIGURATOR_LOGGER'] = 'false'
 
 Dotenv.load('.env.test')
+
+ENV['AWS_SQS_ENPOINT'] ||= 'http://localstack:4566'
+
 VCRConfig.configure
 
 RSpec.configure do |config|

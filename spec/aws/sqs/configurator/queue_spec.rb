@@ -133,7 +133,7 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       let(:queue) { described_class.new(name: 'fifo_queue', fifo: true, region: 'us-east-1') }
 
       it 'should create the queue', :vcr do
-        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/fifo_queue.fifo")
+        expect(subject.queue_url).to include("#{ENV['AWS_ACCOUNT_ID']}/fifo_queue.fifo")
       end
     end
 
@@ -141,7 +141,57 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       let(:queue) { described_class.new(name: 'standard_queue', region: 'us-east-1') }
 
       it 'should create the queue', :vcr do
-        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
+        expect(subject.queue_url).to include("#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
+      end
+    end
+
+    context 'when queue already exists', :vcr do
+      before do
+        described_class.new(options.merge(topics: [
+                                            {
+                                              name: 'existing_topic_product',
+                                              region: 'us-east-1'
+                                            }
+                                          ])).create!(client)
+      end
+
+      let(:queue) { described_class.new(options) }
+      let(:client) { build :client }
+      let(:options) do
+        {
+          name: 'product_updater',
+          region: 'us-east-1',
+          prefix: 'system_name',
+          suffix: 'queue',
+          environment: 'production',
+          fifo: false,
+          content_based_deduplication: true,
+          max_receive_count: 8,
+          dead_letter_queue: true,
+          dead_letter_queue_suffix: 'errors',
+          visibility_timeout: 40,
+          message_retention_period: 1_000_000,
+          metadata: {
+            type: 'strict',
+            reference: 'product'
+          },
+          topics: [
+            {
+              name: 'new_product',
+              region: 'us-east-1'
+            }
+          ]
+        }
+      end
+
+      it 'updates keeps the queue permissions' do
+        subject
+
+        policy = client.aws.get_queue_attributes(queue_url: queue.url, attribute_names: ['Policy']).attributes['Policy']
+        JSON.parse(policy).dig('Statement', 0, 'Condition', 'ArnLike', 'aws:SourceArn').tap do |policies|
+          expect(policies).to include(/new_product/)
+          expect(policies).to include(/existing_topic_product/)
+        end
       end
     end
   end
@@ -162,7 +212,7 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       let(:queue) { described_class.new(name: 'standard_queue', region: 'us-east-1') }
 
       it 'should find the queue', :vcr do
-        expect(subject.queue_url).to eq("https://sqs.us-east-1.amazonaws.com/#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
+        expect(subject.queue_url).to include("#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
       end
     end
   end

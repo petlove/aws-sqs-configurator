@@ -2,23 +2,29 @@
 http_interactions:
 - request:
     method: post
-    uri: https://sqs.us-east-1.amazonaws.com/
+    uri: "<AWS_SQS_ENDPOINT>/"
     body:
       encoding: UTF-8
       string: Action=GetQueueUrl&QueueName=standard_queue&Version=2012-11-05
     headers:
-      Content-Type:
-      - application/x-www-form-urlencoded; charset=utf-8
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.59.0 ruby/2.6.3 x86_64-linux aws-sdk-sqs/1.18.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sqs/1.34.0
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
       Host:
-      - sqs.us-east-1.amazonaws.com
+      - localstack:4566
       X-Amz-Date:
-      - 20190705T182706Z
+      - 20230124T180033Z
+      X-Amz-Security-Token:
+      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
       X-Amz-Content-Sha256:
       - dc795417fcdd41474ab8553974a6b7b268ce2c68388b871aa589e481364630cb
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/us-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
+        Signature=85880adbd2f016dfc2c889d9b1137ed8204473a4a1b19365e91b1773b4769a6d
       Content-Length:
       - '62'
       Accept:
@@ -26,19 +32,30 @@ http_interactions:
   response:
     status:
       code: 200
-      message: OK
+      message: ''
     headers:
-      X-Amzn-Requestid:
-      - 0c47df6c-bcf0-5e34-b541-8af5244aa248
-      Date:
-      - Fri, 05 Jul 2019 18:27:06 GMT
       Content-Type:
       - text/xml
       Content-Length:
-      - '334'
+      - '377'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,OPTIONS,PATCH
+      Access-Control-Allow-Headers:
+      - authorization,cache-control,content-length,content-md5,content-type,etag,location,x-amz-acl,x-amz-content-sha256,x-amz-date,x-amz-request-id,x-amz-security-token,x-amz-tagging,x-amz-target,x-amz-user-agent,x-amz-version-id,x-amzn-requestid,x-localstack-target,amz-sdk-invocation-id,amz-sdk-request
+      Access-Control-Expose-Headers:
+      - etag,x-amz-version-id
+      Date:
+      - Tue, 24 Jan 2023 18:00:33 GMT
+      Server:
+      - hypercorn-h11
     body:
       encoding: UTF-8
-      string: <?xml version="1.0"?><GetQueueUrlResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><GetQueueUrlResult><QueueUrl>https://sqs.us-east-1.amazonaws.com/381158256258/standard_queue</QueueUrl></GetQueueUrlResult><ResponseMetadata><RequestId>0c47df6c-bcf0-5e34-b541-8af5244aa248</RequestId></ResponseMetadata></GetQueueUrlResponse>
-    http_version:
-  recorded_at: Fri, 05 Jul 2019 18:27:06 GMT
-recorded_with: VCR 5.0.0
+      string: |-
+        <?xml version='1.0' encoding='utf-8'?>
+        <GetQueueUrlResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><GetQueueUrlResult><QueueUrl>http://queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/standard_queue</QueueUrl></GetQueueUrlResult><ResponseMetadata><RequestId>MLPECN681M5QYCHH418O3IPPS1BKZ76YIEZJPC8ZP99HCT9SJJVB</RequestId></ResponseMetadata></GetQueueUrlResponse>
+  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+recorded_with: VCR 6.0.0
