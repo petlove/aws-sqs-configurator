@@ -195,25 +195,4 @@ RSpec.describe AWS::SQS::Configurator::Queue, type: :model do
       end
     end
   end
-
-  describe '#find!' do
-    let(:client) { build :client }
-    subject { queue.find!(client) }
-
-    context 'with unknown queue' do
-      let(:queue) { described_class.new(name: 'unknown_queue', region: 'us-east-1') }
-
-      it 'shouldnt find the queue', :vcr do
-        is_expected.to be_falsey
-      end
-    end
-
-    context 'with known queue' do
-      let(:queue) { described_class.new(name: 'standard_queue', region: 'us-east-1') }
-
-      it 'should find the queue', :vcr do
-        expect(subject.queue_url).to include("#{ENV['AWS_ACCOUNT_ID']}/standard_queue")
-      end
-    end
-  end
 end

@@ -5,28 +5,25 @@ http_interactions:
     uri: "<AWS_SQS_ENDPOINT>/"
     body:
       encoding: UTF-8
-      string: Action=CreateQueue&Attribute.1.Name=FifoQueue&Attribute.1.Value=true&Attribute.2.Name=ContentBasedDeduplication&Attribute.2.Value=false&Attribute.3.Name=VisibilityTimeout&Attribute.3.Value=60&Attribute.4.Name=MessageRetentionPeriod&Attribute.4.Value=1209600&QueueName=fifo_queue.fifo&Version=2012-11-05
+      string: Action=CreateQueue&Attribute.1.Name=FifoQueue&Attribute.1.Value=true&Attribute.2.Name=ContentBasedDeduplication&Attribute.2.Value=false&QueueName=fifo_queue.fifo&Version=2012-11-05
     headers:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sqs/1.34.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sqs/1.34.0
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
       Host:
       - localstack:4566
       X-Amz-Date:
-      - 20230124T180033Z
-      X-Amz-Security-Token:
-      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
+      - 20230128T211315Z
       X-Amz-Content-Sha256:
-      - 5bb4fdc1719c9ab0472c6e887cb23a571e4559fe38a13593f778e52d9873b310
+      - c12083e76bbcfff29a6e36418a4ea997e6210eb8858da67b24f64209088e9fcc
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/us-east-1/sqs/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=bed7307addb3ff0a85c023a1488e86913475c49246d3729f1f7af2d3521b064f
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/us-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=98912481b57c0ce05ac55959b8a8e73bd44170955dbbf0d962833655f041d7ec
       Content-Length:
-      - '302'
+      - '180'
       Accept:
       - "*/*"
   response:
@@ -49,13 +46,68 @@ http_interactions:
       Access-Control-Expose-Headers:
       - etag,x-amz-version-id
       Date:
-      - Tue, 24 Jan 2023 18:00:33 GMT
+      - Sat, 28 Jan 2023 21:13:15 GMT
       Server:
       - hypercorn-h11
     body:
       encoding: UTF-8
       string: |-
         <?xml version='1.0' encoding='utf-8'?>
-        <CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>http://queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/fifo_queue.fifo</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>VAO9N2MCKMRXOSL2WBJX1BYRMSFODF9B8F2YSQLDH066UX52GA4K</RequestId></ResponseMetadata></CreateQueueResponse>
-  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+        <CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>http://queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/fifo_queue.fifo</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>DHJFDIJ24PV1A9HBIPFX0NGCZZPMFWQTHDKMHUYR1O9Z8RM8ED0Z</RequestId></ResponseMetadata></CreateQueueResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
+- request:
+    method: post
+    uri: http://queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/fifo_queue.fifo
+    body:
+      encoding: UTF-8
+      string: Action=SetQueueAttributes&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueUrl=http%3A%2F%2Fqueue.localhost.localstack.cloud%3A4566%2F<AWS_ACCOUNT_ID>%2Ffifo_queue.fifo&Version=2012-11-05
+    headers:
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sqs/1.34.0
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Host:
+      - queue.localhost.localstack.cloud:4566
+      X-Amz-Date:
+      - 20230128T211315Z
+      X-Amz-Content-Sha256:
+      - f83627015ed55b237a3a9d3eab3a3d667bedd02e214645ae0892ebc488603204
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/us-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=3243e700470d2422d6f062b5d5fbd031d1d3453e2706884149714232c5df196a
+      Content-Length:
+      - '261'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '259'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,OPTIONS,PATCH
+      Access-Control-Allow-Headers:
+      - authorization,cache-control,content-length,content-md5,content-type,etag,location,x-amz-acl,x-amz-content-sha256,x-amz-date,x-amz-request-id,x-amz-security-token,x-amz-tagging,x-amz-target,x-amz-user-agent,x-amz-version-id,x-amzn-requestid,x-localstack-target,amz-sdk-invocation-id,amz-sdk-request
+      Access-Control-Expose-Headers:
+      - etag,x-amz-version-id
+      Date:
+      - Sat, 28 Jan 2023 21:13:15 GMT
+      Server:
+      - hypercorn-h11
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version='1.0' encoding='utf-8'?>
+        <SetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>NCP78LXDUHN1TYDXUPMEIK73G68GO9I92R7PZP0AT6TOW71TSE06</RequestId></ResponseMetadata></SetQueueAttributesResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
 recorded_with: VCR 6.0.0

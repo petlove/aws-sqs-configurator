@@ -5,28 +5,25 @@ http_interactions:
     uri: "<AWS_SQS_ENDPOINT>/"
     body:
       encoding: UTF-8
-      string: Action=CreateQueue&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueName=system_name_production_product_updater_7_queue&Version=2012-11-05
+      string: Action=CreateQueue&QueueName=system_name_production_product_updater_7_queue&Version=2012-11-05
     headers:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sqs/1.34.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sqs/1.34.0
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
       Host:
       - localstack:4566
       X-Amz-Date:
-      - 20230124T180033Z
-      X-Amz-Security-Token:
-      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
+      - 20230128T211314Z
       X-Amz-Content-Sha256:
-      - faf6b0d916bbaf794de597d1e6bccb4e93fa90d879b9e75f1e5569a3bbfb501b
+      - 872aae2c6a0b04b74ab3c22680e0fdef3b384d38acf430b81c8275c27d5a5b24
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/sa-east-1/sqs/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=461c597b41dc2d148e120d26b625de136fa3a240e161d7a2ecf6e6b01832df29
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/sa-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=ad4a60be2b7060656e60644017934ba64124fc218a7081529a001e72e8463ab8
       Content-Length:
-      - '216'
+      - '94'
       Accept:
       - "*/*"
   response:
@@ -49,15 +46,15 @@ http_interactions:
       Access-Control-Expose-Headers:
       - etag,x-amz-version-id
       Date:
-      - Tue, 24 Jan 2023 18:00:33 GMT
+      - Sat, 28 Jan 2023 21:13:14 GMT
       Server:
       - hypercorn-h11
     body:
       encoding: UTF-8
       string: |-
         <?xml version='1.0' encoding='utf-8'?>
-        <CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>http://sa-east-1.queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/system_name_production_product_updater_7_queue</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>KDE7R71BQI96PKMS8P1VUNFTKUQAN3NSY7JIFE8XQT88L92VWKMT</RequestId></ResponseMetadata></CreateQueueResponse>
-  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+        <CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>http://sa-east-1.queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/system_name_production_product_updater_7_queue</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>0XG5S7L42TJU8MA51YKOP245MNRVU0F439541ALFEZ7IGV2RRIY0</RequestId></ResponseMetadata></CreateQueueResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:14 GMT
 - request:
     method: post
     uri: "<AWS_SQS_ENDPOINT>/"
@@ -68,21 +65,18 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sns/1.58.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sns/1.58.0
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
       Host:
       - localstack:4566
       X-Amz-Date:
-      - 20230124T180033Z
-      X-Amz-Security-Token:
-      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
+      - 20230128T211315Z
       X-Amz-Content-Sha256:
-      - 674259f68b7a19a75c5a402ce06a3f3230c2c18594de5eca0c41fdaf0c249ed1
+      - e4851dcb7324b1baa0fcbae38445a4ed475a204e99c91b8885aac6f24395387d
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/sa-east-1/sns/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=95da8e8eb0cfcb533913e9348f8a6ab4f20a29a82f07e8aa2950cb9878521e07
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/sa-east-1/sns/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=32abf8af65b3d66c8369ce3acf3e959fc5e6c9944e3a0371fef86035db03575c
       Content-Length:
       - '135'
       Accept:
@@ -107,15 +101,15 @@ http_interactions:
       Access-Control-Expose-Headers:
       - etag,x-amz-version-id
       Date:
-      - Tue, 24 Jan 2023 18:00:33 GMT
+      - Sat, 28 Jan 2023 21:13:15 GMT
       Server:
       - hypercorn-h11
     body:
       encoding: UTF-8
       string: |-
         <?xml version='1.0' encoding='utf-8'?>
-        <GetTopicAttributesResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/"><GetTopicAttributesResult><Attributes><entry><key>Owner</key><value><AWS_ACCOUNT_ID></value></entry><entry><key>Policy</key><value>{"Version":"2008-10-17","Id":"__default_policy_ID","Statement":[{"Effect":"Allow","Sid":"__default_statement_ID","Principal":{"AWS":"*"},"Action":["SNS:GetTopicAttributes","SNS:SetTopicAttributes","SNS:AddPermission","SNS:RemovePermission","SNS:DeleteTopic","SNS:Subscribe","SNS:ListSubscriptionsByTopic","SNS:Publish","SNS:Receive"],"Resource":"arn:aws:sns:sa-east-1:<AWS_ACCOUNT_ID>:system_name_production_product_queue","Condition":{"StringEquals":{"AWS:SourceOwner":"<AWS_ACCOUNT_ID>"}}}]}</value></entry><entry><key>TopicArn</key><value>arn:aws:sns:sa-east-1:<AWS_ACCOUNT_ID>:system_name_production_product_queue</value></entry><entry><key>DisplayName</key><value /></entry><entry><key>SubscriptionsPending</key><value>0</value></entry><entry><key>SubscriptionsConfirmed</key><value>0</value></entry><entry><key>SubscriptionsDeleted</key><value>0</value></entry><entry><key>DeliveryPolicy</key><value /></entry><entry><key>EffectiveDeliveryPolicy</key><value>{"defaultHealthyRetryPolicy": {"numNoDelayRetries": 0, "numMinDelayRetries": 0, "minDelayTarget": 20, "maxDelayTarget": 20, "numMaxDelayRetries": 0, "numRetries": 3, "backoffFunction": "linear"}, "sicklyRetryPolicy": null, "throttlePolicy": null, "guaranteed": false}</value></entry></Attributes></GetTopicAttributesResult><ResponseMetadata><RequestId>1PGEY673B0MUSKYSPEMUNT2X252D0FGXH7XEC69PKVBVH5NHK0FD</RequestId></ResponseMetadata></GetTopicAttributesResponse>
-  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+        <GetTopicAttributesResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/"><GetTopicAttributesResult><Attributes><entry><key>Owner</key><value><AWS_ACCOUNT_ID></value></entry><entry><key>Policy</key><value>{"Version":"2008-10-17","Id":"__default_policy_ID","Statement":[{"Effect":"Allow","Sid":"__default_statement_ID","Principal":{"AWS":"*"},"Action":["SNS:GetTopicAttributes","SNS:SetTopicAttributes","SNS:AddPermission","SNS:RemovePermission","SNS:DeleteTopic","SNS:Subscribe","SNS:ListSubscriptionsByTopic","SNS:Publish","SNS:Receive"],"Resource":"arn:aws:sns:sa-east-1:<AWS_ACCOUNT_ID>:system_name_production_product_queue","Condition":{"StringEquals":{"AWS:SourceOwner":"<AWS_ACCOUNT_ID>"}}}]}</value></entry><entry><key>TopicArn</key><value>arn:aws:sns:sa-east-1:<AWS_ACCOUNT_ID>:system_name_production_product_queue</value></entry><entry><key>DisplayName</key><value /></entry><entry><key>SubscriptionsPending</key><value>0</value></entry><entry><key>SubscriptionsConfirmed</key><value>0</value></entry><entry><key>SubscriptionsDeleted</key><value>0</value></entry><entry><key>DeliveryPolicy</key><value /></entry><entry><key>EffectiveDeliveryPolicy</key><value>{"defaultHealthyRetryPolicy": {"numNoDelayRetries": 0, "numMinDelayRetries": 0, "minDelayTarget": 20, "maxDelayTarget": 20, "numMaxDelayRetries": 0, "numRetries": 3, "backoffFunction": "linear"}, "sicklyRetryPolicy": null, "throttlePolicy": null, "guaranteed": false}</value></entry></Attributes></GetTopicAttributesResult><ResponseMetadata><RequestId>M5JQP2XH93WLUTCEYEKY77UTC6WKGLNELF5840WSXGTF9L4P0F4F</RequestId></ResponseMetadata></GetTopicAttributesResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
 - request:
     method: post
     uri: "<AWS_SQS_ENDPOINT>/"
@@ -126,21 +120,18 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sns/1.58.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sns/1.58.0
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
       Host:
       - localstack:4566
       X-Amz-Date:
-      - 20230124T180033Z
-      X-Amz-Security-Token:
-      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
+      - 20230128T211315Z
       X-Amz-Content-Sha256:
-      - df69c68ddf82e8323f4f681e80f27c3e9950a8388ef68e21be76cb4908c19f96
+      - 5e5df6ace7e7f24fb6274bc0216b75b1a014ba0fbfa2b99afc39de82c702248a
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/sa-east-1/sns/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=09237a8ee7510d8f3cc3bb27fc5ed476e46ee36e208fecfb635b3211be165ad2
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/sa-east-1/sns/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=db2c0f9836e90eb7dcf7be4b8f7ca0403105ecf979c92dd0e9d9b534e4d01e96
       Content-Length:
       - '240'
       Accept:
@@ -165,40 +156,37 @@ http_interactions:
       Access-Control-Expose-Headers:
       - etag,x-amz-version-id
       Date:
-      - Tue, 24 Jan 2023 18:00:33 GMT
+      - Sat, 28 Jan 2023 21:13:15 GMT
       Server:
       - hypercorn-h11
     body:
       encoding: UTF-8
       string: |-
         <?xml version='1.0' encoding='utf-8'?>
-        <SubscribeResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/"><SubscribeResult><SubscriptionArn>arn:aws:sns:sa-east-1:<AWS_ACCOUNT_ID>:system_name_production_product_queue:f2f76596-8285-487d-b858-584973a03427</SubscriptionArn></SubscribeResult><ResponseMetadata><RequestId>A5E6JJNCUSPKVJJT7G0V44Q3GMB8EMCH5FIL2IY9SRNU5XVXPRF8</RequestId></ResponseMetadata></SubscribeResponse>
-  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+        <SubscribeResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/"><SubscribeResult><SubscriptionArn>arn:aws:sns:sa-east-1:<AWS_ACCOUNT_ID>:system_name_production_product_queue:7897da8b-a631-4190-991e-e853c444cfe1</SubscriptionArn></SubscribeResult><ResponseMetadata><RequestId>DDLEM7SG9FZSXUQNDZ85432OSK39ZCZ9TXPVPZVWA734KYF8MSNF</RequestId></ResponseMetadata></SubscribeResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
 - request:
     method: post
     uri: "<AWS_SQS_ENDPOINT>/"
     body:
       encoding: UTF-8
-      string: Action=SetSubscriptionAttributes&AttributeName=RawMessageDelivery&AttributeValue=true&SubscriptionArn=arn%3Aaws%3Asns%3Asa-east-1%3A<AWS_ACCOUNT_ID>%3Asystem_name_production_product_queue%3Af2f76596-8285-487d-b858-584973a03427&Version=2010-03-31
+      string: Action=SetSubscriptionAttributes&AttributeName=RawMessageDelivery&AttributeValue=true&SubscriptionArn=arn%3Aaws%3Asns%3Asa-east-1%3A<AWS_ACCOUNT_ID>%3Asystem_name_production_product_queue%3A7897da8b-a631-4190-991e-e853c444cfe1&Version=2010-03-31
     headers:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sns/1.58.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sns/1.58.0
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
       Host:
       - localstack:4566
       X-Amz-Date:
-      - 20230124T180033Z
-      X-Amz-Security-Token:
-      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
+      - 20230128T211315Z
       X-Amz-Content-Sha256:
-      - b43bb564de97a95cfe7c4c6599b55dc4d54db952c6bc19034896309bd19232d8
+      - 6a0ba95203430a36c626889e12b9a3f55826f01d35e556a48d8e6fbb80bfa686
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/sa-east-1/sns/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=16b9b3a137931f8176195034cf14e02061ce97328f9848d5ea91f8a1b9a69ecf
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/sa-east-1/sns/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=c49426eb6dfc14cd7c74726f51b9920d0c86c025058160c17dc74ae3935757dd
       Content-Length:
       - '241'
       Accept:
@@ -223,15 +211,15 @@ http_interactions:
       Access-Control-Expose-Headers:
       - etag,x-amz-version-id
       Date:
-      - Tue, 24 Jan 2023 18:00:33 GMT
+      - Sat, 28 Jan 2023 21:13:15 GMT
       Server:
       - hypercorn-h11
     body:
       encoding: UTF-8
       string: |-
         <?xml version='1.0' encoding='utf-8'?>
-        <SetSubscriptionAttributesResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/"><ResponseMetadata><RequestId>BI2Y8ND90YEE6GXNMJQMPBD939HS42VYZ55EDI45FYRGPFJ5AN2Z</RequestId></ResponseMetadata></SetSubscriptionAttributesResponse>
-  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+        <SetSubscriptionAttributesResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/"><ResponseMetadata><RequestId>7TL3WLGGZIBY83VLY91X1EEUPKODR4I4MAU94SM8ZU4FHNKG9RF8</RequestId></ResponseMetadata></SetSubscriptionAttributesResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
 - request:
     method: post
     uri: "<AWS_SQS_ENDPOINT>/<AWS_ACCOUNT_ID>/system_name_production_product_updater_7_queue"
@@ -242,21 +230,18 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sqs/1.34.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sqs/1.34.0
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
       Host:
       - localstack:4566
       X-Amz-Date:
-      - 20230124T180033Z
-      X-Amz-Security-Token:
-      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
+      - 20230128T211315Z
       X-Amz-Content-Sha256:
-      - d2e9840d89e59223eba8fd2a89c542bb5229ac84c02003dff3c3b0d29a421c7a
+      - 8d22005ed6dafee37fa7a458822bd1814498cd476603659f27f3cf68de27f004
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/sa-east-1/sqs/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=5527bd42141c7766bd3f96947d122057aefd6de75e6d7ffc4f245ca0d095ca70
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/sa-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=90a9cd808b77e083e6f9a2bf840305d4ec32d51c2a0b34c319c4b6afbd9ec82c
       Content-Length:
       - '869'
       Accept:
@@ -281,42 +266,94 @@ http_interactions:
       Access-Control-Expose-Headers:
       - etag,x-amz-version-id
       Date:
-      - Tue, 24 Jan 2023 18:00:33 GMT
+      - Sat, 28 Jan 2023 21:13:15 GMT
       Server:
       - hypercorn-h11
     body:
       encoding: UTF-8
       string: |-
         <?xml version='1.0' encoding='utf-8'?>
-        <SetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>XXJY7ELRRSQUGF4QNM0BKEQVMAMT3KR4W1FOK35PLHENM1VOABYR</RequestId></ResponseMetadata></SetQueueAttributesResponse>
-  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+        <SetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>Q1N9JDFT8AKJWW4WLTAMIHYK8XQVU76UKMGY3CAXLU6HN8I61YVI</RequestId></ResponseMetadata></SetQueueAttributesResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
+- request:
+    method: post
+    uri: http://sa-east-1.queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/system_name_production_product_updater_7_queue
+    body:
+      encoding: UTF-8
+      string: Action=SetQueueAttributes&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueUrl=http%3A%2F%2Fsa-east-1.queue.localhost.localstack.cloud%3A4566%2F<AWS_ACCOUNT_ID>%2Fsystem_name_production_product_updater_7_queue&Version=2012-11-05
+    headers:
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sqs/1.34.0
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Host:
+      - sa-east-1.queue.localhost.localstack.cloud:4566
+      X-Amz-Date:
+      - 20230128T211315Z
+      X-Amz-Content-Sha256:
+      - 84685f471d4023de5d580e444eff89f8c188a5d42a071d9d26f586e6669d0be4
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/sa-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=6ac2c78be6f98437e3a17323bd41fb36b2ccb236db70ed03a166e830ea241d55
+      Content-Length:
+      - '302'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '259'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,OPTIONS,PATCH
+      Access-Control-Allow-Headers:
+      - authorization,cache-control,content-length,content-md5,content-type,etag,location,x-amz-acl,x-amz-content-sha256,x-amz-date,x-amz-request-id,x-amz-security-token,x-amz-tagging,x-amz-target,x-amz-user-agent,x-amz-version-id,x-amzn-requestid,x-localstack-target,amz-sdk-invocation-id,amz-sdk-request
+      Access-Control-Expose-Headers:
+      - etag,x-amz-version-id
+      Date:
+      - Sat, 28 Jan 2023 21:13:15 GMT
+      Server:
+      - hypercorn-h11
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version='1.0' encoding='utf-8'?>
+        <SetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>CKFTKHDA31FAYC9VS0OVEBQY5OQJ138VWSJV14DC66FXD6PJHRKS</RequestId></ResponseMetadata></SetQueueAttributesResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
 - request:
     method: post
     uri: "<AWS_SQS_ENDPOINT>/"
     body:
       encoding: UTF-8
-      string: Action=CreateQueue&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueName=system_name_production_product_adjuster_8_alert&Version=2012-11-05
+      string: Action=CreateQueue&QueueName=system_name_production_product_adjuster_8_alert&Version=2012-11-05
     headers:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.169.0 ruby/2.7.6 x86_64-linux aws-sdk-sqs/1.34.0
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sqs/1.34.0
       Content-Type:
       - application/x-www-form-urlencoded; charset=utf-8
       Host:
       - localstack:4566
       X-Amz-Date:
-      - 20230124T180033Z
-      X-Amz-Security-Token:
-      - IQoJb3JpZ2luX2VjEHIaCXVzLWVhc3QtMSJIMEYCIQD3PwXS6Xjs8kL1BJZF+0At3NP3LHV9PJ0u6O7xPNQ+mwIhAMaxlbHp+LFZaCiXtLaux5MpkZvSO1m7NTSoK8IT0l96KrEDCKr//////////wEQABoMMzgxMTU4MjU2MjU4IgzcV1jTkFQIEPYrWaAqhQMu1xE/AmnY2U3IdwuQEyzdFD1sJBDNoxIMBloLCTnQz9bVfDoEbTlNwi9DYDhgTVax5CNdeQ5+GrMDkk+U4QinZnwiglf0b2yTnC0aGc5RfuO5Aqzt2WdEk17/AIUgOrs+rAgsf+ezxpyeAf1rHBMQd5jUaHKYq3+aiZVvX101f1d1aDFhxFOEftytCwB4o28XB4hLrVwSLFAxXSqqwm8fBaRqxA9Qcrp1dTKD7U3ZuMkdfL6PbLZW0kINZrccYEazg/Cna3D9bwXTKgaK8dy7PIEHVhGw7/rZCslv26dA+mm5by0m4ex3LT84ZEbQ2Y8/p64wDtjAsNLg9sGLmw7+elTy0z5l9WX0njL6/Hxqs8GPKYTmpBVtkmjwWSB876KPUQ2zW2UNK8C6QVJRbLmghcQYg6ewkKu3YbHFSZgE4qEVwiAOhKn5RTSxwxH5sDs8+aJI2zeWkzMFJEFmQR3zaFOgo56Z+wfzBu1JwamtZJY+LTMCOvyt3C74e8MZ67JxOkowoTD5wMaWBjqlAS8O2O90SQFJrUJrwUuUK9JzLoJ7JQztyjmGBFPSD/bvLZ54jCiZgy7OFBWTnTB5/sae+Ol2YZcHLnlFu8f4BrnhVxmoD4bRga0i/6rTqDHMPYdlmQBYEyxa9rMMdxAe4x+qOTC9HckfXCD6Leb9XoqU+xOpzOcmoChuUHp6+pjjX16YNNhTGr0UygHVczsvUzQLrVHsnjqhwDzNeHTqp50cadtCcQ==
+      - 20230128T211315Z
       X-Amz-Content-Sha256:
-      - 8f14dee3f822e7fafa3da753f61a9272a216d7ce2904482451f23f7b05421e03
+      - e7f192f72b98f036977ca35425617f0377eef3e9ab1ea6463d587feffe2ab880
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230124/us-east-1/sqs/aws4_request,
-        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date;x-amz-security-token,
-        Signature=a4dd78cb41603b35d5a7406f879326372f02a926763bdf11a7d55cd87f16190c
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/us-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=1e9f4991c412e24e9cf3b8c39fcb827e1b895c1448643ff437f9f2d15e4903c3
       Content-Length:
-      - '217'
+      - '95'
       Accept:
       - "*/*"
   response:
@@ -339,13 +376,68 @@ http_interactions:
       Access-Control-Expose-Headers:
       - etag,x-amz-version-id
       Date:
-      - Tue, 24 Jan 2023 18:00:33 GMT
+      - Sat, 28 Jan 2023 21:13:15 GMT
       Server:
       - hypercorn-h11
     body:
       encoding: UTF-8
       string: |-
         <?xml version='1.0' encoding='utf-8'?>
-        <CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>http://queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/system_name_production_product_adjuster_8_alert</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>EOT5KV6R0YHW7TZZR2UN0K1BS3ED3JEGIT87SGY0O05H2PZ64RF4</RequestId></ResponseMetadata></CreateQueueResponse>
-  recorded_at: Tue, 24 Jan 2023 18:00:33 GMT
+        <CreateQueueResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><CreateQueueResult><QueueUrl>http://queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/system_name_production_product_adjuster_8_alert</QueueUrl></CreateQueueResult><ResponseMetadata><RequestId>4LU7OAM8Q2DCHF2A0Q0G62A3XOH64KYSKXNFYHYI0DTYS87T1QP2</RequestId></ResponseMetadata></CreateQueueResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
+- request:
+    method: post
+    uri: http://queue.localhost.localstack.cloud:4566/<AWS_ACCOUNT_ID>/system_name_production_product_adjuster_8_alert
+    body:
+      encoding: UTF-8
+      string: Action=SetQueueAttributes&Attribute.1.Name=VisibilityTimeout&Attribute.1.Value=60&Attribute.2.Name=MessageRetentionPeriod&Attribute.2.Value=1209600&QueueUrl=http%3A%2F%2Fqueue.localhost.localstack.cloud%3A4566%2F<AWS_ACCOUNT_ID>%2Fsystem_name_production_product_adjuster_8_alert&Version=2012-11-05
+    headers:
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.169.0 ruby/2.7.5 x86_64-linux aws-sdk-sqs/1.34.0
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Host:
+      - queue.localhost.localstack.cloud:4566
+      X-Amz-Date:
+      - 20230128T211315Z
+      X-Amz-Content-Sha256:
+      - e89ee5a0bdee786e663a54faf3b2abd95f644662f0ce5c05f63a1990042167f0
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<AWS_ACCESS_KEY_ID>/20230128/us-east-1/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=06e3dfbda83a9354415e7774b0390bffcca225aca18a77c6d140b4859a1fb6cf
+      Content-Length:
+      - '293'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '259'
+      Connection:
+      - close
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - HEAD,GET,PUT,POST,DELETE,OPTIONS,PATCH
+      Access-Control-Allow-Headers:
+      - authorization,cache-control,content-length,content-md5,content-type,etag,location,x-amz-acl,x-amz-content-sha256,x-amz-date,x-amz-request-id,x-amz-security-token,x-amz-tagging,x-amz-target,x-amz-user-agent,x-amz-version-id,x-amzn-requestid,x-localstack-target,amz-sdk-invocation-id,amz-sdk-request
+      Access-Control-Expose-Headers:
+      - etag,x-amz-version-id
+      Date:
+      - Sat, 28 Jan 2023 21:13:15 GMT
+      Server:
+      - hypercorn-h11
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version='1.0' encoding='utf-8'?>
+        <SetQueueAttributesResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ResponseMetadata><RequestId>12OQ3CQS5QMNEY1MALY8O5IG82EX5DQ4OA7KVKSXSHJJTE108CLX</RequestId></ResponseMetadata></SetQueueAttributesResponse>
+  recorded_at: Sat, 28 Jan 2023 21:13:15 GMT
 recorded_with: VCR 6.0.0

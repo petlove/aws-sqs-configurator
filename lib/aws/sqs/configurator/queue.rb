@@ -36,14 +36,17 @@ module AWS
         end
 
         def create!(client)
-          client.aws.create_queue(queue_name: @name_formatted, attributes: @attributes)
-                .tap { subscribe_in_topics!(client) if @topics.any? }
+          queue = client.aws.create_queue(queue_name: @name_formatted, attributes: @attributes.slice(*fifo_params))
+                        .tap { subscribe_in_topics!(client) if @topics.any? }
+          client.aws.set_queue_attributes(queue_url: queue.queue_url, attributes: @attributes.except(*fifo_params))
+          queue
         end
 
-        def find!(client)
-          client.aws.get_queue_url(queue_name: @name_formatted)
-        rescue Aws::SQS::Errors::NonExistentQueue
-          false
+        def fifo_params
+          %i[
+            FifoQueue
+            ContentBasedDeduplication
+          ]
         end
 
         private
